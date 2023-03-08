@@ -13,7 +13,8 @@ const validateLogin = [
     check('credential')
       .exists({ checkFalsy: true })
       .notEmpty()
-      .withMessage('Please provide a valid email or username.'),
+      .isEmail()
+      .withMessage('Please provide a valid email.'),
     check('password')
       .exists({ checkFalsy: true })
       .withMessage('Please provide a password.'),
