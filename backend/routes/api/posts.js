@@ -59,18 +59,26 @@ router.post('/', validatePost, requireAuth, async (req, res) => {
     const { content, image } = req.body;
 
     if (image) {
-        const newPost = await Post.create({
+        let newPost = await Post.create({
             userId: req.user.id,
             content,
             image
         });
+        newPost = newPost.toJSON();
+        newPost.User = {};
+        newPost.User.firstName = req.user.firstName;
+        newPost.User.lastName = req.user.lastName;
         res.statusCode = 201;
         return res.json(newPost);
     } else {
-        const newPost = await Post.create({
+        let newPost = await Post.create({
             userId: req.user.id,
             content
         });
+        newPost = newPost.toJSON();
+        newPost.User = {};
+        newPost.User.firstName = req.user.firstName;
+        newPost.User.lastName = req.user.lastName;
         res.statusCode = 201;
         return res.json(newPost);
     }
@@ -79,7 +87,7 @@ router.post('/', validatePost, requireAuth, async (req, res) => {
 //Edit a post
 router.put('/:postId', validatePost, requireAuth, async (req, res) => {
     const postId = req.params.postId;
-    const foundPost = await Post.findByPk(postId);
+    let foundPost = await Post.findByPk(postId);
 
     if (!foundPost) {
         res.status = 404;
@@ -104,6 +112,10 @@ router.put('/:postId', validatePost, requireAuth, async (req, res) => {
                 content,
                 image
             });
+            foundPost = foundPost.toJSON();
+            foundPost.User = {};
+            foundPost.User.firstName = req.user.firstName;
+            foundPost.User.lastName = req.user.lastName;
             res.statusCode = 201;
             return res.json(foundPost);
         } else {
@@ -111,6 +123,10 @@ router.put('/:postId', validatePost, requireAuth, async (req, res) => {
                 userId: req.user.id,
                 content
             });
+            foundPost = foundPost.toJSON();
+            foundPost.User = {};
+            foundPost.User.firstName = req.user.firstName;
+            foundPost.User.lastName = req.user.lastName;
             res.statusCode = 201;
             return res.json(foundPost);
         }
