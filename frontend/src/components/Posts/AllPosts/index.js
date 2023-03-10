@@ -28,6 +28,7 @@ const AllPostsComponent = () => {
                 {allPosts.reverse().map((post) => (
                     <SinglePostCard key={post.id}
                     id={post.id}
+                    userId={post.userId}
                     content={post.content}
                     image={post.image}
                     firstName={post.User.firstName}

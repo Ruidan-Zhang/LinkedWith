@@ -35,7 +35,7 @@ export const editPostAction = (updatedPost) => {
     }
 };
 
-export const deletePostction = (badPostId) => {
+export const deletePostAction = (badPostId) => {
     return {
         type: DELETE_POST,
         badPostId
@@ -103,7 +103,7 @@ export const deletePostThunk = (postId) => async dispatch => {
 
     if (response.ok) {
         const badPost = await response.json();
-        dispatch(deletePostThunk(postId));
+        dispatch(deletePostAction(postId));
         return badPost;
     }
 };
