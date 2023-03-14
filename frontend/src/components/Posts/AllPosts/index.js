@@ -4,6 +4,7 @@ import OpenModalButton from "../../OpenModalButton";
 import { getAllPostsThunk } from "../../../store/posts";
 import CreatePostForm from "../CreatePosts";
 import SinglePostCard from "../SinglePost";
+import './AllPosts.css';
 
 const AllPostsComponent = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const AllPostsComponent = () => {
                     image={post.image}
                     firstName={post.User.firstName}
                     lastName={post.User.lastName}
+                    userImage={post.User.image}
+                    time={post.createdAt}
                     />
                 ))}
             </div>

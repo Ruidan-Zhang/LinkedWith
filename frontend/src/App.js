@@ -16,7 +16,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="whole-page-container">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -31,7 +31,7 @@ function App() {
           </Route>
         </Switch>
       )}
-    </>
+    </div>
   );
 }
 

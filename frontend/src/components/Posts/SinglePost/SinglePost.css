@@ -1,0 +1,45 @@
+.single-post-card-container {
+    border: 1px solid #e0dfdb;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.single-post-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 8px;
+    padding-top: 8px;
+}
+
+.single-post-user-image {
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    border-radius: 50px;
+}
+
+.single-post-time {
+    font-size: smaller;
+    color: #777777;
+}
+
+.single-post-content {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 5px;
+    margin-top: 8px;
+}
+
+.single-post-image {
+    max-width: 555px;
+    object-fit: contain;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
