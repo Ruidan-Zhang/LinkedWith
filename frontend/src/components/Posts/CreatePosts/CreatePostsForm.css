@@ -1,0 +1,28 @@
+.create-post-form-container {
+    height: 375px;
+    width: 550px;
+}
+
+.create-post-form-title {
+    border-bottom: 1px solid #ebebeb;
+    padding-left: 20px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 20;
+    font-size: 19px;
+}
+
+.create-post-form-user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.create-post-form-user-image {
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    border-radius: 50px;
+    margin-right: 7px;
+}

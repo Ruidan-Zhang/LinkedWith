@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Post } = require('../../db/models');
+const { User, Post, Comment } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -14,6 +14,13 @@ const validatePost = [
     .exists({ checkFalsy: true })
     .withMessage('Content can not be empty.'),
   handleValidationErrors
+];
+
+const validateComment = [
+    check('content')
+      .exists({ checkFalsy: true })
+      .withMessage('Comment can not be empty.'),
+    handleValidationErrors
 ];
 
 //Get all posts
@@ -133,7 +140,7 @@ router.put('/:postId', validatePost, requireAuth, async (req, res) => {
     }
 });
 
-//Delete a Spot
+//Delete a Post
 router.delete('/:postId', requireAuth, async (req, res) => {
     const { postId } = req.params;
     const foundPost = await Post.findByPk(postId);
@@ -158,6 +165,67 @@ router.delete('/:postId', requireAuth, async (req, res) => {
             "message": "Successfully deleted",
             "statusCode": 200
         })
+    }
+});
+
+//Get all Comments by a Post's id
+router.get('/:postId/comments', async (req, res, next) => {
+    const { postId } = req.params;
+    const foundPost = await Post.findByPk(postId);
+
+    if (!foundPost) {
+        const err = new Error("Post couldn't be found");
+        err.status = 404;
+        next(err)
+    } else {
+        const commentArr = [];
+        const foundPostComments = await Comment.findAll({
+            where: {
+                postId: foundPost.id
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'firstName', 'lastName', 'image']
+                }
+            ]
+        });
+
+        for (let foundPostComment of foundPostComments) {
+            foundPostComment = foundPostComment.toJSON();
+            commentArr.push(foundPostComment);
+        }
+
+        return res.json({commentArr})
+    }
+});
+
+//Create a Comment for a Post based on the Post's id
+router.post('/:postId/comments', validateComment, requireAuth, async (req, res, next) => {
+    const { postId } = req.params;
+    const foundPost = await Post.findByPk(postId);
+
+    const currentUser = await User.findByPk(req.user.id);
+
+    if (!foundPost) {
+        const err = new Error("Post couldn't be found");
+        err.status = 404;
+        next(err)
+    } else {
+        const { content } = req.body;
+        let newComment = await Comment.create({
+            userId: req.user.id,
+            postId: foundPost.id,
+            content
+        });
+
+        newComment = newComment.toJSON();
+        newComment.User = {};
+        newComment.User.id = currentUser.id;
+        newComment.User.firstName = currentUser.firstName;
+        newComment.User.lastName = currentUser.lastName;
+        res.statusCode = 201;
+        return res.json(newComment);
     }
 });
 

@@ -10,6 +10,7 @@ const AllPostsComponent = () => {
     const dispatch = useDispatch();
     const allPostsObj = useSelector(state => state.posts);
     const allPosts = Object.values(allPostsObj);
+    const currentUser = useSelector(state => state.session.user);
 
     useEffect(() => {
         dispatch(getAllPostsThunk());
@@ -19,10 +20,12 @@ const AllPostsComponent = () => {
 
     return (
         <div className="all-posts-main-container">
-            <div>
+            <div className="create-post-main-container">
+                <img className="create-post-user-image" src={currentUser.image}/>
                 <OpenModalButton
                     buttonText='Start a post'
                     modalComponent={<CreatePostForm />}
+                    className='create-post-button'
                 />
             </div>
             <div className="all-posts-container">

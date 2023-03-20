@@ -18,3 +18,8 @@ body {
     align-items: center;
     margin-top: 70px;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+}

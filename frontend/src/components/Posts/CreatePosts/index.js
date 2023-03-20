@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { createPostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
+import './CreatePostsForm.css';
 
 function CreatePostForm() {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ function CreatePostForm() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const currentUser = useSelector(state => state.session.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,11 +36,15 @@ function CreatePostForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='create-post-form'>
-      <h2>Create a post</h2>
-        <ul className="create-post-form-errors">
-          {errors.map((error, index) => <li key={index}>{error}</li>)}
-        </ul>
+    <form onSubmit={handleSubmit} className='create-post-form-container'>
+      <h2 className="create-post-form-title">Create a post</h2>
+      <ul className="create-post-form-errors">
+        {errors.map((error, index) => <li key={index}>{error}</li>)}
+      </ul>
+      <div className="create-post-form-user-info">
+        <img className="create-post-form-user-image" src={currentUser.image}/>
+        <div className="create-post-form-user-name">{currentUser.firstName} {currentUser.lastName}</div>
+      </div>
       <input
         className="create-post-content"
         type="text"
