@@ -27,7 +27,7 @@
 
 .single-post-time {
     font-size: smaller;
-    color: #777777;
+    color: #797979;
 }
 
 .single-post-card-buttons {
@@ -85,6 +85,11 @@
     border: none;
     background-color: white;
     color: #717171;
+}
+
+.single-post-comments-container {
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .single-post-edit-button :hover {

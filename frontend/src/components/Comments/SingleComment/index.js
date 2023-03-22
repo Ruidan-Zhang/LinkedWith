@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentThunk } from "../../../store/comments";
 import { editCommentThunk } from "../../../store/comments";
-// import './SingleCommentCard.css';
+import './SingleComment.css';
 
-const SingleCommentCard = ({ firstName, lastName, commentOwnerId, commentId, postId, time }) => {
+const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, commentId, postId, time }) => {
     const dispatch = useDispatch();
 
     const foundComment = useSelector(state => state.comments[commentId]);
@@ -36,20 +36,20 @@ const SingleCommentCard = ({ firstName, lastName, commentOwnerId, commentId, pos
 
     const editCommentForm = (
         <form onSubmit={handleSubmit} className='edit-comment-form'>
-        <ul className="edit-comment-form-errors">
-            {errors.map((error, index) => <li key={index}>{error}</li>)}
-        </ul>
-        <input
-            className="edit-comment-content"
-            type="text"
-            placeholder="Edit comment..."
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-        />
-        <div className="edit-comment-submit-button-container">
-            <button className="edit-comment-submit-button" type="submit">Post</button>
-        </div>
+            {/* <ul className="edit-comment-form-errors">
+                {errors.map((error, index) => <li key={index}>{error}</li>)}
+            </ul> */}
+            <textarea
+                className="edit-comment-content"
+                type="text"
+                placeholder="Add a comment..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+            />
+            <div className="edit-comment-submit-button-container">
+                <button className="edit-comment-submit-button" type="submit">Save Changes</button>
+            </div>
         </form>
     );
 
@@ -69,23 +69,30 @@ const SingleCommentCard = ({ firstName, lastName, commentOwnerId, commentId, pos
 
     return (
         <div className="single-comment-card-container">
-            <div className='single-comment-header'>
-                <div className="single-comment-commentOwner">{firstName} {lastName}</div>
-                <div className="delete-comment-button-container">
+            <img className="single-comment-user-image" src={userImage}/>
+            <div className="single-comment-body">
+                <div className='single-comment-header-container'>
+                    <div className="single-comment-header">
+                        <div className="single-comment-commentOwner">{firstName} {lastName}</div>
+                        <div className="single-comment-createdTime">{timeFormat(time)}</div>
+                    </div>
                     {(currentUser.id === commentOwnerId) && (
-                        <div>
-                            <button onClick={editCommentButtonHandler}>edit</button>
-                            <button className="delete-comment-button" onClick={deleteCommentHandler}>Delete this comment</button>
+                        <div className="single-comment-buttons-container">
+                            <div className='single-comment-edit-button'>
+                                <i className="fa-solid fa-pen-to-square" onClick={editCommentButtonHandler}></i>
+                            </div>
+                            <div className='single-post-delete-button'>
+                                <i className="fa-regular fa-trash-can" onClick={deleteCommentHandler}></i>
+                            </div>
                         </div>
                     )}
                 </div>
+                {showEditForm ? (
+                    editCommentForm
+                ) : (
+                    <div className="single-comment-content">{foundComment.content}</div>
+                )}
             </div>
-            <div className="single-comment-createdTime">{timeFormat(time)}</div>
-            {showEditForm ? (
-                editCommentForm
-            ) : (
-                <div className="single-comment-content">{foundComment.content}</div>
-            )}
         </div>
     )
 };

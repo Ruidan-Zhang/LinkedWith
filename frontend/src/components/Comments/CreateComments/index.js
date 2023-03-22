@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { createCommentThunk } from "../../../store/comments";
 import { useModal } from "../../../context/Modal";
+import './CreateCommentsForm.css';
 
 function CreateCommentForm({ id }) {
   const dispatch = useDispatch();
@@ -36,19 +37,24 @@ function CreateCommentForm({ id }) {
 
   return (
     <form onSubmit={handleSubmit} className='create-comment-form-container'>
-      <ul className="create-comment-form-errors">
+      {/* <ul className="create-comment-form-errors">
         {errors.map((error, index) => <li key={index}>{error}</li>)}
-      </ul>
-      <input
-        className="create-comment-content"
-        type="text"
-        placeholder="Add a comment..."
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        required
-      />
+      </ul> */}
+      <div className="create-comment-form-input-container">
+        <img className="create-comment-form-user-image" src={currentUser.image}/>
+        <textarea
+          className="create-comment-content"
+          type="text"
+          placeholder="Add a comment..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+        />
+      </div>
       <div className="create-comment-submit-button-container">
-        <button className="create-comment-submit-button" type="submit">Post</button>
+        {content && (
+          <button className="create-comment-submit-button" type="submit">Post</button>
+        )}
       </div>
     </form>
   );

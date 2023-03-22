@@ -29,6 +29,7 @@
 
 .create-post-content {
     height: 155px;
+    max-width: 505px;
     word-break: break-all;
     margin-top: 13px;
     padding-left: 20px;

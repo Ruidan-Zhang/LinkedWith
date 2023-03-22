@@ -1,0 +1,69 @@
+.single-comment-card-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.single-comment-user-image {
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    border-radius: 50px;
+}
+
+.single-comment-body {
+    width: 444px;
+    background-color: #f2f2f2;
+    border-radius: 0 5px 5px 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 5px;
+}
+
+.single-comment-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.single-comment-createdTime {
+    font-size: smaller;
+    color: #797979;
+    margin-top: 2px;
+}
+
+.single-comment-buttons-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.fa-solid.fa-pen-to-square {
+    font-size: 15px;
+    cursor: pointer;
+    color: #717171;
+}
+
+.fa-regular.fa-trash-can {
+    font-size: 15px;
+    cursor: pointer;
+    color: #717171;
+}
+
+.single-comment-content {
+    word-break: break-all;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.single-comment-edit-button :hover {
+    color: black;
+}
+
+.single-post-delete-button :hover {
+    color: black;
+}
