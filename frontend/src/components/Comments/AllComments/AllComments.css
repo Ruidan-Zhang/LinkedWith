@@ -1,0 +1,6 @@
+.all-comments-container {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
