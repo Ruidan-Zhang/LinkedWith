@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import AllPostsComponent from "./components/Posts/AllPosts";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="whole-page-container">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -25,9 +26,12 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path='/feed'>
+            <AllPostsComponent />
+          </Route>
         </Switch>
       )}
-    </>
+    </div>
   );
 }
 

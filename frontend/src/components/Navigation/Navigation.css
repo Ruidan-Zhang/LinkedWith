@@ -1,3 +1,18 @@
 .hidden {
     display: none;
 }
+
+.nav-bar-container {
+    /* border: 3px solid pink; */
+    width: 1130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: white;
+    z-index: 999;
+    box-shadow: 1000px 0px white, -1000px 0px white;
+    position: absolute;
+    top: 0;
+}

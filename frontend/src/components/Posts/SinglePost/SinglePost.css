@@ -1,0 +1,100 @@
+.single-post-card-container {
+    border: 1px solid #e0dfdb;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.single-post-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 16px;
+    padding-top: 8px;
+}
+
+.single-post-user-image {
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    border-radius: 50px;
+}
+
+.single-post-time {
+    font-size: smaller;
+    color: #777777;
+}
+
+.single-post-card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 16px;
+    gap: 10px;
+}
+
+.single-post-edit-button {
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    color: #717171;
+}
+
+.fa-regular.fa-trash-can {
+    font-size: 15px;
+    cursor: pointer;
+    color: #717171;
+}
+
+.single-post-content {
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 5px;
+    margin-top: 8px;
+}
+
+.single-post-image {
+    max-width: 555px;
+    object-fit: contain;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.single-post-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: 1px solid #ebebeb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.single-post-footer-buttons {
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    color: #717171;
+}
+
+.single-post-edit-button :hover {
+    color: black;
+}
+
+.single-post-delete-button :hover {
+    color: black;
+}
+
+.single-post-footer-buttons-container :hover {
+    color: black;
+}

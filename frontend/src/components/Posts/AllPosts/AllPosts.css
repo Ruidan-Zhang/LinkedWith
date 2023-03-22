@@ -1,0 +1,44 @@
+.all-posts-main-container {
+    /* border: orange 3px solid; */
+    width: 556px;
+}
+
+.create-post-main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+    border: 1px solid #e0dfdb;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: -5px;
+    margin-bottom: 6px;
+    height: 90px;
+    padding-left: 16px;
+}
+
+.create-post-user-image {
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    border-radius: 50px;
+    margin-right: 7px;
+}
+
+.create-post-button {
+    cursor: pointer;
+    background-color: white;
+    color: #717171;
+    font-size: 15px;
+    border: #bbbbbb solid 1px;
+    border-radius: 28px;
+    height: 50px;
+    width: 460px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.create-post-main-container :hover {
+    background-color: rgb(222, 222, 222);
+}

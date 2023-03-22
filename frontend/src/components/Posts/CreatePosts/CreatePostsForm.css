@@ -1,0 +1,84 @@
+.create-post-form-container {
+    height: 375px;
+    width: 550px;
+}
+
+.create-post-form-title {
+    border-bottom: 1px solid #ebebeb;
+    padding-left: 20px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 20;
+    font-size: 19px;
+}
+
+.create-post-form-user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.create-post-form-user-image {
+    height: 50px;
+    width: 50px;
+    object-fit: fill;
+    border-radius: 50px;
+    margin-right: 7px;
+}
+
+.create-post-content {
+    height: 155px;
+    word-break: break-all;
+    margin-top: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+
+.create-post-content:focus {
+    outline: none;
+}
+
+.create-post-form-errors {
+    color: #cc1015;
+    font-size: 15px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.create-post-form-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.create-post-submit-button {
+    cursor: pointer;
+    background-color: #0b65c2;
+    color: white;
+    border: none;
+    width: 65px;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.create-post-submit-button-disabled {
+    cursor: not-allowed;
+    background-color: #ebebeb;
+    color: #a4a4a4;
+    border: none;
+    width: 65px;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 15px;
+}
