@@ -72,6 +72,10 @@
     font-size: 15px;
 }
 
+.edit-post-submit-button:hover {
+    background-color: #0a4682;
+}
+
 .edit-post-submit-button-disabled {
     cursor: not-allowed;
     background-color: #ebebeb;

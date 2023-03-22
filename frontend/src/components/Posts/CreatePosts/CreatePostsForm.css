@@ -73,6 +73,10 @@
     font-size: 15px;
 }
 
+.create-post-submit-button:hover {
+    background-color: #0a4682;
+}
+
 .create-post-submit-button-disabled {
     cursor: not-allowed;
     background-color: #ebebeb;

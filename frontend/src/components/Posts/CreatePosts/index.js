@@ -19,7 +19,7 @@ function CreatePostForm() {
   useEffect(() => {
     const newErrors = [];
 
-    if (content.length > 2000) newErrors.push('You have exceeded the maximum character limit');
+    if (content.length > 2000) newErrors.push('You have exceeded the maximum character limit (2000)');
 
     setErrors(newErrors);
   }, [content]);

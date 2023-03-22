@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentThunk } from "../../../store/comments";
 import { editCommentThunk } from "../../../store/comments";
@@ -14,19 +14,24 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false);
 
+    useEffect(() => {
+        const newErrors = [];
+
+        if (content.length > 500) newErrors.push('You have exceeded the maximum character limit (500)');
+
+        setErrors(newErrors);
+      }, [content]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
 
         const updatedComment = {
             ...foundComment,
             content
         };
 
-        const data = await dispatch(editCommentThunk(updatedComment));
-        if (data && data.errors) {
-            setErrors(data.errors)
-        }
+        await dispatch(editCommentThunk(updatedComment));
+
         setShowEditForm(!showEditForm);
     };
 
@@ -36,9 +41,6 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
 
     const editCommentForm = (
         <form onSubmit={handleSubmit} className='edit-comment-form'>
-            {/* <ul className="edit-comment-form-errors">
-                {errors.map((error, index) => <li key={index}>{error}</li>)}
-            </ul> */}
             <textarea
                 className="edit-comment-content"
                 type="text"
@@ -47,8 +49,21 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
                 onChange={(e) => setContent(e.target.value)}
                 required
             />
-            <div className="edit-comment-submit-button-container">
+            <div className="edit-comment-form-errors">
+                {errors.map((error) => (
+                <div>
+                    <i className="fa-solid fa-ban"></i>{' '}
+                    {error}
+                </div>
+                ))}
+            </div>
+            <div className="edit-comment-form-footer">
+                {(content && content.length <= 500 && content !== foundComment.content) ? (
                 <button className="edit-comment-submit-button" type="submit">Save Changes</button>
+                ) : (
+                <button className="edit-comment-submit-button-disabled" type="submit" disabled={true}>Save Changes</button>
+                )}
+                <button className="edit-comment-cancel-button" onClick={editCommentButtonHandler}>Cancel</button>
             </div>
         </form>
     );
@@ -64,8 +79,6 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
         e.preventDefault();
         await dispatch(deleteCommentThunk(commentId));
     };
-
-    if (!content) return null;
 
     return (
         <div className="single-comment-card-container">

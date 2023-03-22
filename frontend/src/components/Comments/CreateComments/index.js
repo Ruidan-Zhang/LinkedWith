@@ -15,31 +15,31 @@ function CreateCommentForm({ id }) {
 
   const currentUser = useSelector(state => state.session.user);
 
+  useEffect(() => {
+    const newErrors = [];
+
+    if (content.length > 500) newErrors.push('You have exceeded the maximum character limit (500)');
+
+    setErrors(newErrors);
+  }, [content]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
 
     const newComment = {
         content
     };
 
-    const data = await dispatch(createCommentThunk(id, newComment));
+    await dispatch(createCommentThunk(id, newComment));
 
-    if (data && data.errors) {
-      setErrors(data.errors)
-    } else {
-      closeModal()
-      history.push('/feed');
-    }
+    closeModal()
+    history.push('/feed');
 
     setContent('');
   };
 
   return (
     <form onSubmit={handleSubmit} className='create-comment-form-container'>
-      {/* <ul className="create-comment-form-errors">
-        {errors.map((error, index) => <li key={index}>{error}</li>)}
-      </ul> */}
       <div className="create-comment-form-input-container">
         <img className="create-comment-form-user-image" src={currentUser.image}/>
         <textarea
@@ -51,9 +51,20 @@ function CreateCommentForm({ id }) {
           required
         />
       </div>
-      <div className="create-comment-submit-button-container">
-        {content && (
+      <div className="create-comment-form-errors">
+        {errors.map((error) => (
+          <div>
+            <i class="fa-solid fa-ban"></i>{' '}
+            {error}
+          </div>
+        ))}
+      </div>
+      <div className="create-comment-form-footer">
+        {content && content.length <= 500 && (
           <button className="create-comment-submit-button" type="submit">Post</button>
+        )}
+        {(content.length > 500) && (
+          <button className="create-comment-submit-button-disabled" type="submit" disabled={true}>Post</button>
         )}
       </div>
     </form>
