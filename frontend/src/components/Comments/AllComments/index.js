@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllCommentsThunk } from "../../../store/comments";
 import SingleCommentCard from "../SingleComment";
-// import { cleanUpCommentsAction } from "../../store/comments";
-// import './AllComments.css';
+import './AllComments.css';
 
 const AllCommentsComponent = ({ id }) => {
     const dispatch = useDispatch();
