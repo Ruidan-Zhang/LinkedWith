@@ -21,6 +21,7 @@ const AllCommentsComponent = ({ id }) => {
                 <SingleCommentCard key={singleComment.id}
                 firstName={singleComment.User.firstName}
                 lastName={singleComment.User.lastName}
+                userImage={singleComment.User.image}
                 commentOwnerId={singleComment.User.id}
                 commentId={singleComment.id}
                 postId={id}
