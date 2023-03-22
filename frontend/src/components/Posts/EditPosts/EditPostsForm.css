@@ -1,9 +1,9 @@
-.create-post-form-container {
+.edit-post-form-container {
     height: 375px;
     width: 550px;
 }
 
-.create-post-form-title {
+.edit-post-form-title {
     border-bottom: 1px solid #ebebeb;
     padding-left: 20px;
     margin-top: 15px;
@@ -12,14 +12,14 @@
     font-size: 19px;
 }
 
-.create-post-form-user-info {
+.edit-post-form-user-info {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-left: 20px;
 }
 
-.create-post-form-user-image {
+.edit-post-form-user-image {
     height: 50px;
     width: 50px;
     object-fit: fill;
@@ -27,7 +27,7 @@
     margin-right: 7px;
 }
 
-.create-post-content {
+.edit-post-content {
     height: 155px;
     word-break: break-all;
     margin-top: 13px;
@@ -39,18 +39,18 @@
     border-bottom-style: hidden;
 }
 
-.create-post-content:focus {
+.edit-post-content:focus {
     outline: none;
 }
 
-.create-post-form-errors {
+.edit-post-form-errors {
     color: #cc1015;
     font-size: 15px;
     margin-left: 20px;
     margin-top: 20px;
 }
 
-.create-post-form-footer {
+.edit-post-form-footer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -61,7 +61,7 @@
     padding-right: 20px;
 }
 
-.create-post-submit-button {
+.edit-post-submit-button {
     cursor: pointer;
     background-color: #0b65c2;
     color: white;
@@ -72,7 +72,7 @@
     font-size: 15px;
 }
 
-.create-post-submit-button-disabled {
+.edit-post-submit-button-disabled {
     cursor: not-allowed;
     background-color: #ebebeb;
     color: #a4a4a4;

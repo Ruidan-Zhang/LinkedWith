@@ -16,36 +16,36 @@ function CreatePostForm() {
 
   const currentUser = useSelector(state => state.session.user);
 
+  useEffect(() => {
+    const newErrors = [];
+
+    if (content.length > 2000) newErrors.push('You have exceeded the maximum character limit');
+
+    setErrors(newErrors);
+  }, [content]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
 
     const newPost = {
         content,
         image
     };
 
-    const data = await dispatch(createPostThunk(newPost));
+    await dispatch(createPostThunk(newPost));
 
-    if (data && data.errors) {
-      setErrors(data.errors)
-    } else {
-      closeModal()
-      history.push('/feed');
-    }
+    closeModal()
+    history.push('/feed');
   };
 
   return (
     <form onSubmit={handleSubmit} className='create-post-form-container'>
       <h2 className="create-post-form-title">Create a post</h2>
-      <ul className="create-post-form-errors">
-        {errors.map((error, index) => <li key={index}>{error}</li>)}
-      </ul>
       <div className="create-post-form-user-info">
         <img className="create-post-form-user-image" src={currentUser.image}/>
         <div className="create-post-form-user-name">{currentUser.firstName} {currentUser.lastName}</div>
       </div>
-      <input
+      <textarea
         className="create-post-content"
         type="text"
         placeholder="What do you want to talk about?"
@@ -53,8 +53,21 @@ function CreatePostForm() {
         onChange={(e) => setContent(e.target.value)}
         required
       />
-      <div className="create-post-submit-button-container">
-        <button className="create-post-submit-button" type="submit">Post</button>
+      <div className="create-post-form-errors">
+        {errors.map((error) => (
+          <div>
+            <i class="fa-solid fa-ban"></i>{' '}
+            {error}
+          </div>
+        ))}
+      </div>
+      <div className="create-post-form-footer">
+        <i className="fa-regular fa-image"></i>
+        {(content && content.length <= 2000) ? (
+          <button className="create-post-submit-button" type="submit">Post</button>
+        ) : (
+          <button className="create-post-submit-button-disabled" type="submit" disabled={true}>Post</button>
+        )}
       </div>
     </form>
   );

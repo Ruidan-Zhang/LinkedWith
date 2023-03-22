@@ -30,6 +30,30 @@
     color: #777777;
 }
 
+.single-post-card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 16px;
+    gap: 10px;
+}
+
+.single-post-edit-button {
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    color: #717171;
+}
+
+.fa-regular.fa-trash-can {
+    font-size: 15px;
+    cursor: pointer;
+    color: #717171;
+}
+
 .single-post-content {
     padding-left: 16px;
     padding-right: 16px;
@@ -42,4 +66,35 @@
     object-fit: contain;
     margin-top: 5px;
     margin-bottom: 10px;
+}
+
+.single-post-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: 1px solid #ebebeb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.single-post-footer-buttons {
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    color: #717171;
+}
+
+.single-post-edit-button :hover {
+    color: black;
+}
+
+.single-post-delete-button :hover {
+    color: black;
+}
+
+.single-post-footer-buttons-container :hover {
+    color: black;
 }

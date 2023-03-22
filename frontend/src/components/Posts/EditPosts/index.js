@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { editPostThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
+import './EditPostsForm.css';
 
 function EditPostForm({ id }) {
   const dispatch = useDispatch();
@@ -10,14 +11,22 @@ function EditPostForm({ id }) {
   const { closeModal } = useModal();
 
   const foundPost = useSelector(state => state.posts[id]);
+  const currentUser = useSelector(state => state.session.user);
 
   const [content, setContent] = useState(foundPost.content);
   const [image, setImage] = useState(foundPost.image);
   const [errors, setErrors] = useState([]);
 
+  useEffect(() => {
+    const newErrors = [];
+
+    if (content.length > 2000) newErrors.push('You have exceeded the maximum character limit');
+
+    setErrors(newErrors);
+  }, [content]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
 
     const updatedPost = {
         ...foundPost,
@@ -25,23 +34,20 @@ function EditPostForm({ id }) {
         image
     };
 
-    const data = await dispatch(editPostThunk(updatedPost));
+    await dispatch(editPostThunk(updatedPost));
 
-    if (data && data.errors) {
-        setErrors(data.errors)
-    } else {
-        closeModal()
-        history.push('/feed');
-    }
+    closeModal()
+    history.push('/feed');
   };
 
   return (
-    <form onSubmit={handleSubmit} className='edit-post-form'>
-      <h2>Editpost</h2>
-        <ul className="edit-post-form-errors">
-          {errors.map((error, index) => <li key={index}>{error}</li>)}
-        </ul>
-      <input
+    <form onSubmit={handleSubmit} className='edit-post-form-container'>
+      <h2 className="edit-post-form-title">Edit post</h2>
+      <div className="edit-post-form-user-info">
+        <img className="edit-post-form-user-image" src={currentUser.image}/>
+        <div className="edit-post-form-user-name">{currentUser.firstName} {currentUser.lastName}</div>
+      </div>
+      <textarea
         className="edit-post-content"
         type="text"
         placeholder="What do you want to talk about?"
@@ -49,8 +55,21 @@ function EditPostForm({ id }) {
         onChange={(e) => setContent(e.target.value)}
         required
       />
-      <div className="edit-post-submit-button-container">
-        <button className="edit-post-submit-button" type="submit">Post</button>
+      <div className="edit-post-form-errors">
+        {errors.map((error) => (
+          <div>
+            <i class="fa-solid fa-ban"></i>{' '}
+            {error}
+          </div>
+        ))}
+      </div>
+      <div className="edit-post-form-footer">
+        <i className="fa-regular fa-image"></i>
+        {(content && content.length <= 2000 && content !== foundPost.content) ? (
+          <button className="edit-post-submit-button" type="submit">Save</button>
+        ) : (
+          <button className="edit-post-submit-button-disabled" type="submit" disabled={true}>Save</button>
+        )}
       </div>
     </form>
   );

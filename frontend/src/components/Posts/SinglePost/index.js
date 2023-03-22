@@ -31,33 +31,47 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
 
     return (
         <div className="single-post-card-container">
-            {userId === currentUser.id && (
-                <div>
-                    <OpenModalButton
-                        buttonText='Edit post'
-                        modalComponent={<EditPostForm id={id}/>}
-                    />
-                    <button onClick={deletePostHandler}>Delete</button>
-                </div>
-            )}
             <div className='single-post-header-container'>
                 <img className='single-post-user-image' src={userImage}/>
                 <div className='single-post-header'>
                     <div className='single-post-user-name'>{firstName} {lastName}</div>
                     <div className='single-post-time'>{timeFormat(time)}</div>
                 </div>
-            </div>
-            <div className='single-post-content'>{content}</div>
-            <img src={image} className='single-post-image'></img>
-            <div className='comments-section-main-container'>
-                <button onClick={showCommentsHandler}>Comment</button>
-                {showComments === true && (
-                    <div className='single-post-footer'>
-                        <CreateCommentForm id={id} />
-                        <AllCommentsComponent id={id}/>
+                {userId === currentUser.id && (
+                    <div className='single-post-card-buttons'>
+                        <OpenModalButton
+                            buttonText={<i className="fa-solid fa-pen-to-square"></i>}
+                            modalComponent={<EditPostForm id={id}/>}
+                            className='single-post-edit-button'
+                        />
+                        <div className='single-post-delete-button'>
+                            <i className="fa-regular fa-trash-can" onClick={deletePostHandler}></i>
+                        </div>
                     </div>
                 )}
             </div>
+            <div className='single-post-content'>{content}</div>
+            <img src={image} className='single-post-image'></img>
+            <div className='single-post-footer'>
+                <div className='single-post-footer-buttons-container'>
+                    <button className='single-post-footer-buttons'>
+                        <i className="fa-regular fa-thumbs-up"></i>{' '}
+                        Like
+                    </button>
+                </div>
+                <div className='single-post-footer-buttons-container'>
+                    <button onClick={showCommentsHandler} className='single-post-footer-buttons'>
+                        <i className="fa-regular fa-comment-dots"></i>{' '}
+                        Comment
+                    </button>
+                </div>
+            </div>
+            {showComments === true && (
+                    <div className='single-post-comments-container'>
+                        <CreateCommentForm id={id} />
+                        <AllCommentsComponent id={id}/>
+                    </div>
+            )}
         </div>
     )
 };
