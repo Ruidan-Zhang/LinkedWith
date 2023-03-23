@@ -27,30 +27,46 @@ function LoginFormPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <div className='log-in-page-container'>
+      <form className='log-in-form-container' onSubmit={handleSubmit}>
+        <div className='log-in-form-title'>
+          Welcome to your professional community
+        </div>
+        {/* <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul> */}
+        <div className='log-in-form-body'>
+          <label className='log-in-form-label'>
+            Email
+          </label>
+          <input
+            type="text"
+            className='log-in-form-input'
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+          />
+          <label className='log-in-form-label'>
+            Password
+          </label>
+          <input
+            type="password"
+            className='log-in-form-input'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className='log-in-form-button'>Log In</button>
+          <p>
+            <span>
+              or
+            </span>
+          </p>
+          <button type="submit" className='log-in-form-demo-user-button'>Demo User</button>
+        </div>
+      </form>
+      <img className='log-in-page-image' src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt='log-in-page'></img>
+    </div>
   );
 }
 
