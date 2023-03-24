@@ -21,6 +21,13 @@
     box-sizing: border-box;
 }
 
+.create-comment-form-errors {
+    color: #cc1015;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
 .create-comment-content:focus {
     outline: none;
     border: 2px solid #b2b2b2;
@@ -30,6 +37,26 @@
     cursor: pointer;
     background-color: #0b65c2;
     color: white;
+    border: none;
+    width: 53px;
+    height: 26px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 52px;
+    margin-top: 10px;
+}
+
+.create-comment-submit-button:hover {
+    background-color: #0a4682;
+}
+
+.create-comment-submit-button-disabled {
+    cursor: not-allowed;
+    background-color: #ebebeb;
+    color: #a4a4a4;
     border: none;
     width: 53px;
     height: 26px;

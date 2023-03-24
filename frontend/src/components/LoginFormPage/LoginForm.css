@@ -1,0 +1,97 @@
+.log-in-page-container {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 750px;
+    padding-top: 70px;
+}
+
+.log-in-form-container {
+    width: 560px;
+    height: 670px;
+}
+
+.log-in-form-title {
+    font-weight: 200;
+    font-size: 50px;
+    color: #946052;
+    margin-bottom: 50px;
+}
+
+.log-in-form-body {
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+    height: 500px;
+}
+
+.log-in-form-label {
+    font-size: 16px;
+}
+
+.log-in-form-input {
+    height: 50px;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.log-in-form-input:focus {
+    outline: none;
+    background-color: #f3f2ee;
+}
+
+.log-in-form-button {
+    height: 49px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #0b65c2;
+    color: white;
+    border: none;
+    font-size: 17px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.log-in-form-button:hover {
+    background-color: #0a4682;
+}
+
+p {
+    color: #333333;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #afafaf;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+p span {
+    background: white;
+    padding:0 10px;
+}
+
+.log-in-form-demo-user-button {
+    height: 49px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    color: black;
+    font-size: 17px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.log-in-form-demo-user-button:hover {
+    background-color: #f3f2ee;
+}
+
+.log-in-page-image {
+    width: 710px;
+    height: 540px;
+}

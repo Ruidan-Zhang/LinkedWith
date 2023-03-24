@@ -28,7 +28,7 @@
 }
 
 .edit-post-content {
-    height: 155px;
+    min-height: 155px;
     word-break: break-all;
     margin-top: 13px;
     padding-left: 20px;
@@ -70,6 +70,10 @@
     height: 35px;
     border-radius: 20px;
     font-size: 15px;
+}
+
+.edit-post-submit-button:hover {
+    background-color: #0a4682;
 }
 
 .edit-post-submit-button-disabled {

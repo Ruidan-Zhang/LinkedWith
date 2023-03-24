@@ -11,15 +11,17 @@ body {
 
 .whole-page-container {
     /* border: blue 3px solid; */
-    /* background-color: green; */
     width: 1130px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+}
+
+textarea {
+    resize: none;
 }

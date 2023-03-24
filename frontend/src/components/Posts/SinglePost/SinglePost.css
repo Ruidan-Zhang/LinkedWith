@@ -55,6 +55,7 @@
 }
 
 .single-post-content {
+    word-break: break-all;
     padding-left: 16px;
     padding-right: 16px;
     margin-bottom: 5px;
