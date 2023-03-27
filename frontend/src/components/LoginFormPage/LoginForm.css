@@ -4,9 +4,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 1330px;
     height: 750px;
     padding-top: 70px;
+    padding-left: 130px;
+    box-shadow: 1000px 0px white, -1000px 0px white;
 }
 
 .log-in-form-container {
@@ -19,6 +21,12 @@
     font-size: 50px;
     color: #946052;
     margin-bottom: 50px;
+}
+
+.log-in-form-errors {
+    margin-top: -20px;
+    margin-left: -40px;
+    color: #cc1015;
 }
 
 .log-in-form-body {

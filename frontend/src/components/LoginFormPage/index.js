@@ -26,15 +26,25 @@ function LoginFormPage() {
       });
   }
 
+  const demoUserSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.login({ credential: "user1@user.io", password: "password1" }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  }
+
   return (
     <div className='log-in-page-container'>
       <form className='log-in-form-container' onSubmit={handleSubmit}>
         <div className='log-in-form-title'>
           Welcome to your professional community
         </div>
-        {/* <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul> */}
+        <ul>
+          {errors.map((error, idx) => <li className='log-in-form-errors' key={idx}>*{error}</li>)}
+        </ul>
         <div className='log-in-form-body'>
           <label className='log-in-form-label'>
             Email
@@ -62,7 +72,7 @@ function LoginFormPage() {
               or
             </span>
           </p>
-          <button type="submit" className='log-in-form-demo-user-button'>Demo User</button>
+          <button type="submit" className='log-in-form-demo-user-button' onClick={demoUserSubmit}>Demo User</button>
         </div>
       </form>
       <img className='log-in-page-image' src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt='log-in-page'></img>
