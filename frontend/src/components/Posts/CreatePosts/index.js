@@ -67,9 +67,11 @@ function CreatePostForm() {
         ))}
       </div>
       <div className="create-post-form-footer">
-        <i className="fa-regular fa-image">
-          <input type='file' onChange={updateFile}/>
-        </i>
+        <label for='file-upload' className="create-post-image-upload">
+          <i className="fa-regular fa-image"></i>
+          <div className="create-post-file-name">{image?.name}</div>
+        </label>
+        <input type='file' id="file-upload" onChange={updateFile}/>
         {(content && content.length <= 2000) ? (
           <button className="create-post-submit-button" type="submit">Post</button>
         ) : (
