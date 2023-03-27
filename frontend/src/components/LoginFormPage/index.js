@@ -57,7 +57,7 @@ function LoginFormPage() {
             required
           />
           <button type="submit" className='log-in-form-button'>Log In</button>
-          <p>
+          <p className='log-in-form-divider'>
             <span>
               or
             </span>

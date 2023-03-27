@@ -66,13 +66,15 @@ export const getSingPostThunk = (post) => async dispatch => {
 export const createPostThunk = (post) => async dispatch => {
     const { content, image } = post;
 
+    const formData = new FormData();
+    formData.append('content', content);
+
+    if (image) formData.append('image', image);
+
     const response = await csrfFetch("/api/posts", {
       method: "POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        content,
-        image
-      }),
+      headers: {"Content-Type": "multipart/form-data"},
+      body: formData
     });
 
     if (response.ok) {

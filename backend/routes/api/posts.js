@@ -7,6 +7,8 @@ const { User, Post, Comment } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
+
 const router = express.Router();
 
 const validatePost = [
@@ -62,14 +64,16 @@ router.get('/:postId', async (req, res, next) => {
 });
 
 //Create a post
-router.post('/', validatePost, requireAuth, async (req, res) => {
-    const { content, image } = req.body;
+router.post('/', singleMulterUpload('image'), validatePost, requireAuth, async (req, res) => {
+    const { content } = req.body;
 
-    if (image) {
+    const postImage = await singlePublicFileUpload(req.file);
+
+    if (postImage) {
         let newPost = await Post.create({
             userId: req.user.id,
             content,
-            image
+            image: postImage
         });
         newPost = newPost.toJSON();
         newPost.User = {};
