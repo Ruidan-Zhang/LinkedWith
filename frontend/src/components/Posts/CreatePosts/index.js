@@ -11,7 +11,7 @@ function CreatePostForm() {
   const { closeModal } = useModal();
 
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const currentUser = useSelector(state => state.session.user);
@@ -38,6 +38,11 @@ function CreatePostForm() {
     history.push('/feed');
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  }
+
   return (
     <form onSubmit={handleSubmit} className='create-post-form-container'>
       <h2 className="create-post-form-title">Create a post</h2>
@@ -62,7 +67,9 @@ function CreatePostForm() {
         ))}
       </div>
       <div className="create-post-form-footer">
-        <i className="fa-regular fa-image"></i>
+        <i className="fa-regular fa-image">
+          <input type='file' onChange={updateFile}/>
+        </i>
         {(content && content.length <= 2000) ? (
           <button className="create-post-submit-button" type="submit">Post</button>
         ) : (
