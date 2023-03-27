@@ -19,28 +19,40 @@ const AllPostsComponent = () => {
     if (!allPostsObj || !allPosts) return null;
 
     return (
-        <div className="all-posts-main-container">
-            <div className="create-post-main-container">
-                <img className="create-post-user-image" src={currentUser.image}/>
-                <OpenModalButton
-                    buttonText='Start a post'
-                    modalComponent={<CreatePostForm />}
-                    className='create-post-button'
-                />
+        <div className="feed-page-main-container">
+            <div className="feed-page-left-card">
+                <img className="left-card-image" src={currentUser.image}/>
+                <div className="left-card-user-name">{currentUser.firstName} {currentUser.lastName}</div>
             </div>
-            <div className="all-posts-container">
-                {allPosts.reverse().map((post) => (
-                    <SinglePostCard key={post.id}
-                    id={post.id}
-                    userId={post.userId}
-                    content={post.content}
-                    image={post.image}
-                    firstName={post.User.firstName}
-                    lastName={post.User.lastName}
-                    userImage={post.User.image}
-                    time={post.createdAt}
+            <div className="all-posts-main-container">
+                <div className="create-post-main-container">
+                    <img className="create-post-user-image" src={currentUser.image}/>
+                    <OpenModalButton
+                        buttonText='Start a post'
+                        modalComponent={<CreatePostForm />}
+                        className='create-post-button'
                     />
-                ))}
+                </div>
+                <div className="all-posts-container">
+                    {allPosts.reverse().map((post) => (
+                        <SinglePostCard key={post.id}
+                        id={post.id}
+                        userId={post.userId}
+                        content={post.content}
+                        image={post.image}
+                        firstName={post.User.firstName}
+                        lastName={post.User.lastName}
+                        userImage={post.User.image}
+                        time={post.createdAt}
+                        />
+                    ))}
+                </div>
+            </div>
+            <div className="feed-page-right-card">
+                <h3 className="right-card-title">About LinkedWith</h3>
+                <h5 className="right-card-description">
+                    LinkedWith, a LinkedIn clone website, is a professional social networking platform that allows users to create profiles, connect with other professionals, and showcase their skills and experience.
+                </h5>
             </div>
         </div>
     )

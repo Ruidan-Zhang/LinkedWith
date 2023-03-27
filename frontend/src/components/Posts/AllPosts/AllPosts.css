@@ -1,19 +1,77 @@
+.feed-page-main-container {
+    /* border: 3px solid pink; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.feed-page-left-card {
+    border: 1px solid #e0dfdb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 225px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    position: sticky;
+    top: 25px;
+}
+
+.left-card-image {
+    height: 75px;
+    width: 75px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.left-card-user-name {
+    margin-bottom: 15px;
+}
+
+.feed-page-right-card {
+    box-sizing: border-box;
+    border: 1px solid #e0dfdb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 290px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    position: sticky;
+    top: 25px;
+}
+
+.right-card-title {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.right-card-description {
+    font-weight: 300;
+    word-break:keep-all;
+    line-height: 23px;
+}
+
 .all-posts-main-container {
     /* border: 3px orange solid; */
     width: 556px;
-    margin-top: 70px;
 }
 
 .create-post-main-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: center; */
     border: 1px solid #e0dfdb;
     background-color: white;
     border-radius: 10px;
     box-sizing: border-box;
-    margin-top: -5px;
     margin-bottom: 6px;
     height: 90px;
     padding-left: 16px;
