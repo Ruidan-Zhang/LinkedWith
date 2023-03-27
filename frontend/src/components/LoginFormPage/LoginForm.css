@@ -60,7 +60,7 @@
     background-color: #0a4682;
 }
 
-p {
+.log-in-form-divider {
     color: #333333;
     font-size: 15px;
     width: 100%;
@@ -70,7 +70,7 @@ p {
     margin: 10px 0 20px;
 }
 
-p span {
+.log-in-form-divider span {
     background: white;
     padding:0 10px;
 }
