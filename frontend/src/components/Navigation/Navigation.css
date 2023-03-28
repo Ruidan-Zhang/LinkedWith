@@ -9,7 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 55px;
     background-color: white;
     z-index: 999;
     box-shadow: 1000px 0px white, -1000px 0px white;
@@ -81,6 +81,7 @@
 
 .profile-dropdown {
     background-color: white;
+    box-shadow: 1px 1px 2px rgb(102, 102, 102, 0.5), -1px -1px 2px rgb(102, 102, 102, 0.5);
     position: absolute;
     border-radius: 5px 0 5px 5px;
     margin-top: 8px;
