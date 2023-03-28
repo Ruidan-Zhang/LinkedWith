@@ -238,6 +238,7 @@ router.post('/:postId/comments', validateComment, requireAuth, async (req, res, 
         newComment.User.id = currentUser.id;
         newComment.User.firstName = currentUser.firstName;
         newComment.User.lastName = currentUser.lastName;
+        newComment.User.image = currentUser.image;
         res.statusCode = 201;
         return res.json(newComment);
     }
