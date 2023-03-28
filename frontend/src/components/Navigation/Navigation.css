@@ -9,12 +9,32 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 60px;
     background-color: white;
     z-index: 999;
     box-shadow: 1000px 0px white, -1000px 0px white;
     position: absolute;
     top: 0;
+    /* margin-top: 10px; */
+}
+
+.nav-bar-logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+}
+
+.nav-bar-logo-name {
+    color: #0d64c2;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.nav-bar-logo {
+    height: 35px;
+    width: 35px;
 }
 
 .nav-bar-buttons-container {
