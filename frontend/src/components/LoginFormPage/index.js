@@ -1,24 +1,21 @@
 // frontend/src/components/LoginFormPage/index.js
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return (
-    <Redirect to="/feed" />
-  );
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    history.push('/feed');
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
@@ -26,9 +23,10 @@ function LoginFormPage() {
       });
   }
 
-  const demoUserSubmit = (e) => {
+  const demoUserSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    history.push('/feed');
     return dispatch(sessionActions.login({ credential: "user1@user.io", password: "password1" }))
       .catch(async (res) => {
         const data = await res.json();

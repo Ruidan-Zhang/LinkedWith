@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-// import homeLogo from '../../../../assets/favicon_io/logo.png';
 import homeLogo from '../../assets/favicon_io/logo.png';
 
 function Navigation({ isLoaded }){
