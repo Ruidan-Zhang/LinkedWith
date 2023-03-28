@@ -25,3 +25,7 @@ form {
 textarea {
     resize: none;
 }
+
+li {
+    list-style-type: none;
+}

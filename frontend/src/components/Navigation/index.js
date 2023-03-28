@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import homeLogo from '../../assets/favicon_io/logo.png';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -26,7 +27,10 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='nav-bar-container'>
-      <NavLink exact to="/">Home</NavLink>
+      <NavLink exact to="/" className='nav-bar-logo-container'>
+        <div className='nav-bar-logo-name'>Linked</div>
+        <img className='nav-bar-logo' src={homeLogo}/>
+      </NavLink>
       {isLoaded && sessionLinks}
     </div>
   );

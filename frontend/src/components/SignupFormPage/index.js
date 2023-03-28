@@ -15,7 +15,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/feed" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,9 +34,9 @@ function SignupFormPage() {
     <div className="sign-up-page-container">
       <div  className='sign-up-form-title'>Make the most of your proessional life</div>
       <form className="sign-up-form-container" onSubmit={handleSubmit}>
-        {/* <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul> */}
+        <ul>
+          {errors.map((error, idx) => <li className="sign-up-form-errors" key={idx}>*{error}</li>)}
+        </ul>
         <label className='sign-up-form-label'>
           Email
         </label>

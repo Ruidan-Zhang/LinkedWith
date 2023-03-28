@@ -1,25 +1,33 @@
 // frontend/src/components/LoginFormPage/index.js
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return (
-    <Redirect to="/feed" />
-  );
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    history.push('/feed');
     return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  }
+
+  const demoUserSubmit = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+    history.push('/feed');
+    return dispatch(sessionActions.login({ credential: "user1@user.io", password: "password1" }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -32,9 +40,9 @@ function LoginFormPage() {
         <div className='log-in-form-title'>
           Welcome to your professional community
         </div>
-        {/* <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul> */}
+        <ul>
+          {errors.map((error, idx) => <li className='log-in-form-errors' key={idx}>*{error}</li>)}
+        </ul>
         <div className='log-in-form-body'>
           <label className='log-in-form-label'>
             Email
@@ -62,7 +70,7 @@ function LoginFormPage() {
               or
             </span>
           </p>
-          <button type="submit" className='log-in-form-demo-user-button'>Demo User</button>
+          <button type="submit" className='log-in-form-demo-user-button' onClick={demoUserSubmit}>Demo User</button>
         </div>
       </form>
       <img className='log-in-page-image' src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4" alt='log-in-page'></img>
