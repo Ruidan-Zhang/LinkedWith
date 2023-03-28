@@ -66,8 +66,11 @@ router.get('/:postId', async (req, res, next) => {
 //Create a post
 router.post('/', singleMulterUpload('image'), validatePost, requireAuth, async (req, res) => {
     const { content } = req.body;
+    let postImage;
 
-    const postImage = await singlePublicFileUpload(req.file);
+    if (req.file) {
+        postImage = await singlePublicFileUpload(req.file);
+    };
 
     if (postImage) {
         let newPost = await Post.create({
@@ -98,9 +101,16 @@ router.post('/', singleMulterUpload('image'), validatePost, requireAuth, async (
 });
 
 //Edit a post
-router.put('/:postId', validatePost, requireAuth, async (req, res) => {
+router.put('/:postId', singleMulterUpload('image'), validatePost, requireAuth, async (req, res) => {
     const postId = req.params.postId;
-    let foundPost = await Post.findByPk(postId);
+    let foundPost = await Post.findByPk(postId, {
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'lastName', 'image']
+            }
+        ]
+    });
 
     if (!foundPost) {
         res.status = 404;
@@ -117,29 +127,27 @@ router.put('/:postId', validatePost, requireAuth, async (req, res) => {
             "statusCode": res.status
         })
     } else {
-        const { content, image } = req.body;
+        const { image, content } = req.body;
+        let postImage;
 
-        if (image) {
+        if (req.file) {
+            postImage = await singlePublicFileUpload(req.file);
+        };
+
+        if (postImage) {
             foundPost.update({
                 userId: req.user.id,
                 content,
-                image
+                image: postImage
             });
-            foundPost = foundPost.toJSON();
-            foundPost.User = {};
-            foundPost.User.firstName = req.user.firstName;
-            foundPost.User.lastName = req.user.lastName;
             res.statusCode = 201;
             return res.json(foundPost);
         } else {
             foundPost.update({
                 userId: req.user.id,
-                content
+                content,
+                image
             });
-            foundPost = foundPost.toJSON();
-            foundPost.User = {};
-            foundPost.User.firstName = req.user.firstName;
-            foundPost.User.lastName = req.user.lastName;
             res.statusCode = 201;
             return res.json(foundPost);
         }

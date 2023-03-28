@@ -11,7 +11,7 @@ const AllPostsComponent = () => {
     const allPostsObj = useSelector(state => state.posts);
     const allPosts = Object.values(allPostsObj);
     const currentUser = useSelector(state => state.session.user);
-    console.log('all posts', allPosts)
+
     useEffect(() => {
         dispatch(getAllPostsThunk());
     }, [dispatch]);
