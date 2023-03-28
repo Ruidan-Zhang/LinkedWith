@@ -11,7 +11,7 @@ const AllPostsComponent = () => {
     const allPostsObj = useSelector(state => state.posts);
     const allPosts = Object.values(allPostsObj);
     const currentUser = useSelector(state => state.session.user);
-
+    console.log('all posts', allPosts)
     useEffect(() => {
         dispatch(getAllPostsThunk());
     }, [dispatch]);
@@ -21,12 +21,12 @@ const AllPostsComponent = () => {
     return (
         <div className="feed-page-main-container">
             <div className="feed-page-left-card">
-                <img className="left-card-image" src={currentUser.image}/>
-                <div className="left-card-user-name">{currentUser.firstName} {currentUser.lastName}</div>
+                <img className="left-card-image" src={currentUser?.image}/>
+                <div className="left-card-user-name">{currentUser?.firstName} {currentUser?.lastName}</div>
             </div>
             <div className="all-posts-main-container">
                 <div className="create-post-main-container">
-                    <img className="create-post-user-image" src={currentUser.image}/>
+                    <img className="create-post-user-image" src={currentUser?.image}/>
                     <OpenModalButton
                         buttonText='Start a post'
                         modalComponent={<CreatePostForm />}

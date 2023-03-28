@@ -79,6 +79,7 @@ router.post('/', singleMulterUpload('image'), validatePost, requireAuth, async (
         newPost.User = {};
         newPost.User.firstName = req.user.firstName;
         newPost.User.lastName = req.user.lastName;
+        newPost.User.image = req.user.image;
         res.statusCode = 201;
         return res.json(newPost);
     } else {
@@ -90,6 +91,7 @@ router.post('/', singleMulterUpload('image'), validatePost, requireAuth, async (
         newPost.User = {};
         newPost.User.firstName = req.user.firstName;
         newPost.User.lastName = req.user.lastName;
+        newPost.User.image = req.user.image;
         res.statusCode = 201;
         return res.json(newPost);
     }

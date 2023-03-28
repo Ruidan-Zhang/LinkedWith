@@ -29,6 +29,8 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
         setShowComments(!showComments);
     };
 
+    if (!currentUser) return null;
+
     return (
         <div className="single-post-card-container">
             <div className='single-post-header-container'>
