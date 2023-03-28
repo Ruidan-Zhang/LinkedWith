@@ -67,7 +67,7 @@ function CreatePostForm() {
         ))}
       </div>
       <div className="create-post-form-footer">
-        <label for='file-upload' className="create-post-image-upload">
+        <label htmlFor='file-upload' className="create-post-image-upload">
           <i className="fa-regular fa-image"></i>
           <div className="create-post-file-name">{image?.name}</div>
         </label>

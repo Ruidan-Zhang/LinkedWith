@@ -23,14 +23,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && currentUser && (
         <Switch>
+          <Route exact path="/">
+            <AllPostsComponent />
+          </Route>
+          <Route exact={true} path="/login">
+            <LoginFormPage />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route  exact path='/feed'>
+          <Route path='/feed'>
             <AllPostsComponent />
-          </Route>
-          <Route exact path="/">
-            <LoginFormPage />
           </Route>
         </Switch>
       )}
@@ -42,7 +45,7 @@ function App() {
           <Route path="/">
             <LoginFormPage />
           </Route>
-      </Switch>
+        </Switch>
       )}
       <Footer />
     </div>

@@ -27,10 +27,17 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='nav-bar-container'>
-      <NavLink exact to="/" className='nav-bar-logo-container'>
-        <div className='nav-bar-logo-name'>Linked</div>
-        <img className='nav-bar-logo' src={homeLogo}/>
-      </NavLink>
+      {sessionUser ? (
+        <NavLink exact to="/feed" className='nav-bar-logo-container'>
+          <div className='nav-bar-logo-name'>Linked</div>
+          <img className='nav-bar-logo' src={homeLogo}/>
+        </NavLink>
+      ) : (
+        <NavLink exact to="/" className='nav-bar-logo-container'>
+          <div className='nav-bar-logo-name'>Linked</div>
+          <img className='nav-bar-logo' src={homeLogo}/>
+        </NavLink>
+      )}
       {isLoaded && sessionLinks}
     </div>
   );
