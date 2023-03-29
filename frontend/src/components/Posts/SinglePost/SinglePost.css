@@ -48,9 +48,11 @@
     color: #717171;
 }
 
-.fa-regular.fa-trash-can {
+.single-post-delete-button {
     font-size: 15px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
     color: #717171;
 }
 
