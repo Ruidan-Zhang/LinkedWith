@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentThunk } from "../../../store/comments";
 import { editCommentThunk } from "../../../store/comments";
+import OpenModalButton from "../../OpenModalButton";
+import DeleteCommentonfirmation from "../DeleteComments";
 import './SingleComment.css';
 
 const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, commentId, postId, time }) => {
@@ -94,9 +96,14 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
                             <div className='single-comment-edit-button'>
                                 <i className="fa-solid fa-pen-to-square" onClick={editCommentButtonHandler}></i>
                             </div>
-                            <div className='single-post-delete-button'>
-                                <i className="fa-regular fa-trash-can" onClick={deleteCommentHandler}></i>
+                            <div>
+                            <OpenModalButton
+                                buttonText={<i className="fa-regular fa-trash-can"></i>}
+                                modalComponent={<DeleteCommentonfirmation id={commentId}/>}
+                                className='single-comment-delete-button'
+                            />
                             </div>
+
                         </div>
                     )}
                 </div>

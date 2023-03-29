@@ -73,7 +73,7 @@ function EditPostForm({ id }) {
           <i className="fa-regular fa-image"></i>
           <div className="create-post-file-name">{image?.name}</div>
         </label>
-        <input type='file' id="file-upload" onChange={updateFile}/>
+        <input type='file' accept="image/jpeg, image/png" id="file-upload" onChange={updateFile}/>
         {(content && content.length <= 2000) ? (
           <button className="edit-post-submit-button" type="submit">Save</button>
         ) : (

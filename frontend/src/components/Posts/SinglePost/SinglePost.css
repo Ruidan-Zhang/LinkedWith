@@ -48,9 +48,11 @@
     color: #717171;
 }
 
-.fa-regular.fa-trash-can {
+.single-post-delete-button {
     font-size: 15px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
     color: #717171;
 }
 
@@ -58,15 +60,35 @@
     word-break: break-all;
     padding-left: 16px;
     padding-right: 16px;
-    margin-bottom: 5px;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .single-post-image {
     max-width: 555px;
     object-fit: contain;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.single-post-counts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 6px;
+}
+
+.single-post-comments-count {
+    cursor: pointer;
+    color: #8d8d8d;
+    font-size: 12px;
+}
+
+.single-post-comments-count:hover {
+    text-decoration: underline;
+    color: #0d64c2;
 }
 
 .single-post-footer {

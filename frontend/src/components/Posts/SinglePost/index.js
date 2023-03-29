@@ -2,23 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from "react";
 import OpenModalButton from "../../OpenModalButton";
 import EditPostForm from '../EditPosts';
+import DeletePostConfirmation from '../DeletePosts';
 import AllCommentsComponent from '../../Comments/AllComments';
 import CreateCommentForm from '../../Comments/CreateComments';
-import { deletePostThunk } from '../../../store/posts';
 import { useHistory } from 'react-router-dom';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, numComments }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
     const [showComments, setShowComments] = useState(false);
-
-    const deletePostHandler = async (e) => {
-        e.preventDefault();
-        await dispatch(deletePostThunk(id));
-        history.push('/feed');
-    };
 
     const timeFormat = (time) => {
         time = time.slice(0, 10)
@@ -46,14 +40,22 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
                             modalComponent={<EditPostForm id={id}/>}
                             className='single-post-edit-button'
                         />
-                        <div className='single-post-delete-button'>
-                            <i className="fa-regular fa-trash-can" onClick={deletePostHandler}></i>
-                        </div>
+                        <OpenModalButton
+                            buttonText={<i className="fa-regular fa-trash-can"></i>}
+                            modalComponent={<DeletePostConfirmation id={id}/>}
+                            className='single-post-delete-button'
+                        />
                     </div>
                 )}
             </div>
             <div className='single-post-content'>{content}</div>
             <img src={image} className='single-post-image'></img>
+            <div className='single-post-counts'>
+                <div className='single-post-likes-count'></div>
+                {numComments > 0 && (
+                    <div className='single-post-comments-count' onClick={showCommentsHandler}>{numComments} comments</div>
+                )}
+            </div>
             <div className='single-post-footer'>
                 <div className='single-post-footer-buttons-container'>
                     <button className='single-post-footer-buttons'>
@@ -69,10 +71,10 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
                 </div>
             </div>
             {showComments === true && (
-                    <div className='single-post-comments-container'>
-                        <CreateCommentForm id={id} />
-                        <AllCommentsComponent id={id}/>
-                    </div>
+                <div className='single-post-comments-container'>
+                    <CreateCommentForm id={id} />
+                    <AllCommentsComponent id={id}/>
+                </div>
             )}
         </div>
     )
