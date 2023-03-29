@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    content: {
+    liked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false

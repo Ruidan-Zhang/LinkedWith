@@ -8,7 +8,7 @@ import { deletePostThunk } from '../../../store/posts';
 import { useHistory } from 'react-router-dom';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, comments }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
@@ -54,6 +54,12 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
             </div>
             <div className='single-post-content'>{content}</div>
             <img src={image} className='single-post-image'></img>
+            <div className='single-post-counts'>
+                <div className='single-post-likes-count'></div>
+                {comments?.length > 0 && (
+                    <div className='single-post-comments-count' onClick={showCommentsHandler}>{comments?.length} comments</div>
+                )}
+            </div>
             <div className='single-post-footer'>
                 <div className='single-post-footer-buttons-container'>
                     <button className='single-post-footer-buttons'>
@@ -69,10 +75,10 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
                 </div>
             </div>
             {showComments === true && (
-                    <div className='single-post-comments-container'>
-                        <CreateCommentForm id={id} />
-                        <AllCommentsComponent id={id}/>
-                    </div>
+                <div className='single-post-comments-container'>
+                    <CreateCommentForm id={id} />
+                    <AllCommentsComponent id={id}/>
+                </div>
             )}
         </div>
     )

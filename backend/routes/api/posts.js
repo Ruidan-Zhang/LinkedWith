@@ -32,6 +32,9 @@ router.get('/', async (req, res) => {
         {
             model: User,
             attributes: ['id', 'firstName', 'lastName', 'image']
+        },
+        {
+            model: Comment
         }
       ]
     });
