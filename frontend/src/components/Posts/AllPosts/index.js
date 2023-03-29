@@ -44,7 +44,7 @@ const AllPostsComponent = () => {
                         lastName={post.User.lastName}
                         userImage={post.User.image}
                         time={post.createdAt}
-                        comments={post.Comments}
+                        numComments={post.numComments}
                         />
                     ))}
                 </div>

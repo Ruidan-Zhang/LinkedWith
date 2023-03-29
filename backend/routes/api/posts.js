@@ -32,9 +32,6 @@ router.get('/', async (req, res) => {
         {
             model: User,
             attributes: ['id', 'firstName', 'lastName', 'image']
-        },
-        {
-            model: Comment
         }
       ]
     });
@@ -43,6 +40,13 @@ router.get('/', async (req, res) => {
 
     for (let post of posts) {
         post = post.toJSON();
+
+        let numComments = await Comment.count({
+            where: {
+                postId: post.id
+            }
+        });
+        post.numComments = numComments;
         postsArr.push(post);
     }
 

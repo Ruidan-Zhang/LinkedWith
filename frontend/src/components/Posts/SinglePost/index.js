@@ -5,11 +5,10 @@ import EditPostForm from '../EditPosts';
 import DeletePostConfirmation from '../DeletePosts';
 import AllCommentsComponent from '../../Comments/AllComments';
 import CreateCommentForm from '../../Comments/CreateComments';
-import { deletePostThunk } from '../../../store/posts';
 import { useHistory } from 'react-router-dom';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, comments }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, numComments }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
@@ -53,8 +52,8 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
             <img src={image} className='single-post-image'></img>
             <div className='single-post-counts'>
                 <div className='single-post-likes-count'></div>
-                {comments?.length > 0 && (
-                    <div className='single-post-comments-count' onClick={showCommentsHandler}>{comments?.length} comments</div>
+                {numComments > 0 && (
+                    <div className='single-post-comments-count' onClick={showCommentsHandler}>{numComments} comments</div>
                 )}
             </div>
             <div className='single-post-footer'>
