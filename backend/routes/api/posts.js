@@ -30,8 +30,7 @@ router.get('/', async (req, res) => {
     const posts = await Post.findAll({
       include: [
         {
-            model: User,
-            attributes: ['id', 'firstName', 'lastName', 'image']
+            model: User
         }
       ]
     });
@@ -40,7 +39,6 @@ router.get('/', async (req, res) => {
 
     for (let post of posts) {
         post = post.toJSON();
-
         let numComments = await Comment.count({
             where: {
                 postId: post.id
@@ -66,6 +64,13 @@ router.get('/:postId', async (req, res, next) => {
             "statusCode": res.status
         })
     } else {
+        post = post.toJSON();
+        let numComments = await Comment.count({
+            where: {
+                postId: postId
+            }
+        });
+        post.numComments = numComments;
         return res.json(post)
     }
 });

@@ -5,12 +5,10 @@ import EditPostForm from '../EditPosts';
 import DeletePostConfirmation from '../DeletePosts';
 import AllCommentsComponent from '../../Comments/AllComments';
 import CreateCommentForm from '../../Comments/CreateComments';
-import { useHistory } from 'react-router-dom';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, numComments }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
     const [showComments, setShowComments] = useState(false);
 
@@ -50,12 +48,12 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
             </div>
             <div className='single-post-content'>{content}</div>
             <img src={image} className='single-post-image'></img>
-            <div className='single-post-counts'>
+            {/* <div className='single-post-counts'>
                 <div className='single-post-likes-count'></div>
                 {numComments > 0 && (
                     <div className='single-post-comments-count' onClick={showCommentsHandler}>{numComments} comments</div>
                 )}
-            </div>
+            </div> */}
             <div className='single-post-footer'>
                 <div className='single-post-footer-buttons-container'>
                     <button className='single-post-footer-buttons'>

@@ -4,20 +4,12 @@ const LOAD_ALL_POSTS = 'posts/LOAD';
 const CREATE_POST = 'post/CREATE';
 const EDIT_POST = 'post/EDIT';
 const DELETE_POST = 'post/DELETE';
-const LOAD_SINGLE_POST = 'singPost/LOAD';
 
 //action creators
 export const loadAllPostsAction = (posts) => {
     return {
         type: LOAD_ALL_POSTS,
         posts
-    }
-};
-
-export const loadSinglePostAction = (post) => {
-    return {
-        type: LOAD_SINGLE_POST,
-        post
     }
 };
 
@@ -50,16 +42,6 @@ export const getAllPostsThunk = () => async dispatch => {
         const allPosts = await response.json();
         dispatch(loadAllPostsAction(allPosts));
         return allPosts;
-    }
-};
-
-export const getSingPostThunk = (post) => async dispatch => {
-    const response = await csrfFetch(`/api/posts/${post.id}`);
-
-    if (response.ok) {
-        const foundPost = await response.json();
-        dispatch(loadSinglePostAction(foundPost));
-        return foundPost;
     }
 };
 
