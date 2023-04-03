@@ -26,14 +26,15 @@ LinkedWith, a LinkedIn clone website, is a professional social networking platfo
 
 
 ### Features:
-1. Posts
-* Logged in users can view all the posts
-* Logged in users can create posts
-* Logged in users can edit and delete his/her own posts
-2. Comments
-* Logged in users can view all the comments
-* Logged in users can create comments for each post
-* Logged in users can edit and delete his/her own comments
+1. Landing page
+![home-page-demo-user]
+
+[home-page-demo-user]: ./assets/LinkedWith-landing-page.png
+
+2. Posts and Comments
+![home-page-posts]
+
+[home-page-posts]: ./assets/LinkedWith-posts-and-comments.png
 
 
 ## Getting started
@@ -43,13 +44,13 @@ LinkedWith, a LinkedIn clone website, is a professional social networking platfo
       ```
       npm install
       ```
-      
+
 3. Run migration and seeders in the backend folder
       ```
       npx dotenv sequelize db:migrate
       npx dotenv sequelize db:seed:all
       ```
-      
+
 4. Respectively start the backend server and the front server
       ```
       npm start

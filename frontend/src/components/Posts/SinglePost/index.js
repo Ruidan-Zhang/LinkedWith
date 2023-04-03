@@ -55,12 +55,12 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
                 )}
             </div> */}
             <div className='single-post-footer'>
-                <div className='single-post-footer-buttons-container'>
+                {/* <div className='single-post-footer-buttons-container'>
                     <button className='single-post-footer-buttons'>
                         <i className="fa-regular fa-thumbs-up"></i>{' '}
                         Like
                     </button>
-                </div>
+                </div> */}
                 <div className='single-post-footer-buttons-container'>
                     <button onClick={showCommentsHandler} className='single-post-footer-buttons'>
                         <i className="fa-regular fa-comment-dots"></i>{' '}
