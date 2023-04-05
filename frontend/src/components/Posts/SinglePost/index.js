@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../../OpenModalButton";
 import EditPostForm from '../EditPosts';
 import DeletePostConfirmation from '../DeletePosts';
@@ -9,6 +10,7 @@ import './SinglePost.css';
 
 const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
     const [showComments, setShowComments] = useState(false);
 
@@ -21,11 +23,15 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
         setShowComments(!showComments);
     };
 
+    const goToUserProfileHandler = () => {
+        history.push(`/profile/${userId}`);
+    };
+
     if (!currentUser) return null;
 
     return (
         <div className="single-post-card-container">
-            <div className='single-post-header-container'>
+            <div className='single-post-header-container' onClick={goToUserProfileHandler}>
                 <img className='single-post-user-image' src={userImage}/>
                 <div className='single-post-header'>
                     <div className='single-post-user-name'>{firstName} {lastName}</div>

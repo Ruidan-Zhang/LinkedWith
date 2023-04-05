@@ -7,6 +7,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllPostsComponent from "./components/Posts/AllPosts";
+import UserProfileComponent from "./components/Profiles/SingleUserProfile";
 import Footer from "./components/Footer";
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path='/feed'>
             <AllPostsComponent />
+          </Route>
+          <Route path='/profile/:userId'>
+            <UserProfileComponent />
           </Route>
         </Switch>
       )}
