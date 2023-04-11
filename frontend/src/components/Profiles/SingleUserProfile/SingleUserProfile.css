@@ -1,0 +1,121 @@
+.user-profile-main-container {
+    /* border: 3px solid green; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 75px;
+    gap: 25px;
+}
+
+.profile-page-left-container {
+    /* border: 3px solid orange; */
+    width: 805px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.user-profile-bio-container {
+    border: 2px solid #e2e1df;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.profile-page-user-image {
+    width: 155px;
+    height: 155px;
+    object-fit: fill;
+    border-radius: 200px;
+    margin-bottom: 10px;
+}
+
+.profile-page-user-name {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.profile-page-user-occupation {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.user-experiences-container {
+    border: 2px solid #e2e1df;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.experience-header {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.single-experience-card-container {
+    /* border: 3px solid lightseagreen; */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.working-experience-icon {
+    height: 45px;
+    width: 45px;
+}
+
+.single-experience-card {
+    /* border: 3px solid lightgreen; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.working-title {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.company-name {
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.working-timeline {
+    font-weight: 300;
+    font-size: 13px;
+    color: #787878;
+}
+
+.user-skills-container {
+    border: 2px solid #e2e1df;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.single-skill-card {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.profile-page-right-container {
+    box-sizing: border-box;
+    border: 2px solid #e2e1df;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 273px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    position: sticky;
+    top: 25px;
+}
