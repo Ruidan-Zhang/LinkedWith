@@ -19,6 +19,9 @@ router.get('/:userId', async (req, res, next) => {
             },
             {
                 model: Skill
+            },
+            {
+                model: Education
             }
         ]
     });

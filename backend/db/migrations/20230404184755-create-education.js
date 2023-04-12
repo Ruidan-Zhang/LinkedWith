@@ -5,6 +5,8 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 
+options.tableName = 'Educations';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("Educations", {
@@ -18,7 +20,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users'
+          model: 'Users',
+          key: 'id'
         },
         onDelete: 'CASCADE'
       },

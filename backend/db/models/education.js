@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   Education.init({
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'Users'
+      }
     },
     schoolName: {
       type: DataTypes.STRING,
