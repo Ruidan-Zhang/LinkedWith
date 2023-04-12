@@ -3,7 +3,6 @@
 }
 
 .nav-bar-container {
-    /* border: 3px solid pink; */
     width: 1130px;
     display: flex;
     flex-direction: row;
@@ -81,7 +80,7 @@
 
 .profile-dropdown {
     background-color: white;
-    box-shadow: 1px 1px 2px rgb(102, 102, 102, 0.5), -1px -1px 2px rgb(102, 102, 102, 0.5);
+    box-shadow: 1px 2px 2px rgb(102, 102, 102, 0.5), -1px -1px 2px rgb(102, 102, 102, 0.5);
     position: absolute;
     border-radius: 5px 0 5px 5px;
     margin-top: 8px;
@@ -126,6 +125,26 @@
     width: 60px;
     object-fit: fill;
     border-radius: 50px;
+}
+
+.drop-down-menu-buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.drop-down-view-profile-button {
+    cursor: pointer;
+    background-color: white;
+    color: #0966c2;
+    border: 2px solid #0966c2;
+    border-radius: 15px;
+    padding: 3px;
+}
+
+.drop-down-view-profile-button:hover {
+    background-color: #ddefff;
 }
 
 .drop-down-log-out-button {

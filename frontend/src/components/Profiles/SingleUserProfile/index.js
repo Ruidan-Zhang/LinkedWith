@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getAllUserThunk } from '../../../store/users';
 import './SingleUserProfile.css';
 import workIcon from '../../../assets/working-experience-icon.png';
+import educationIcon from '../../../assets/educationIcon.png';
 
 const UserProfileComponent = () => {
     const dispatch = useDispatch();
@@ -43,6 +44,22 @@ const UserProfileComponent = () => {
                                 </div>
                                 <div className='working-timeline'>
                                     {experience.startedAt.slice(0, 7)} - {experience.endedAt.slice(0, 7)}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className='user-experiences-container'>
+                    <div className='experience-header'>Education</div>
+                    {targetUser.Education.map(education => (
+                        <div className='single-experience-card-container'>
+                            <img className='working-experience-icon' src={educationIcon} />
+                            <div className='single-experience-card'>
+                                <div className='working-title'>
+                                    {education.schoolName}
+                                </div>
+                                <div className='working-timeline'>
+                                    {education.startedAt.slice(0, 7)} - {education.endedAt.slice(0, 7)}
                                 </div>
                             </div>
                         </div>
