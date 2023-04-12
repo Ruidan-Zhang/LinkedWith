@@ -27,7 +27,6 @@ router.put('/:commentId', validateComment, requireAuth, async (req, res, next) =
             }
         ]
     });
-    const currentUser = req.user;
 
     if (!foundComment) {
         const err = new Error("Comment couldn't be found");
