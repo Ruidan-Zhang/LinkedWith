@@ -19,10 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   Education.init({
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Users'
-      }
+      allowNull: false
     },
     schoolName: {
       type: DataTypes.STRING,
@@ -42,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Education',
+    tableName: 'Educations'
   });
   return Education;
 };

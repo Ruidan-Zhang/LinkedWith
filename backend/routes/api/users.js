@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Experience, Skill } = require('../../db/models');
+const { User, Experience, Education, Skill } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
   const allUsers = await User.findAll({
     include: [
       {
-        model: Experience
+        model: Education
       },
       {
         model: Skill
