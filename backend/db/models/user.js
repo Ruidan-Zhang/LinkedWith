@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, firstName, lastName, email, image } = this; // context will be the User instance
-      return { id, firstName, lastName, email, image };
+      const { id, firstName, lastName, email, occupation, image } = this; // context will be the User instance
+      return { id, firstName, lastName, email, occupation, image };
     }
     validatePassword(password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -27,12 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         return await User.scope('currentUser').findByPk(user.id);
       }
     }
-    static async signup({ firstName, lastName, email, password, image }) {
+    static async signup({ firstName, lastName, email, occupation, password, image }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
         firstName,
         lastName,
         email,
+        occupation,
         hashedPassword,
         image
       });
@@ -49,6 +50,18 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       User.hasMany(models.Like, {
+        foreignKey: 'userId'
+      });
+
+      User.hasMany(models.Education, {
+        foreignKey: 'userId'
+      });
+
+      User.hasMany(models.Experience, {
+        foreignKey: 'userId'
+      });
+
+      User.hasMany(models.Skill, {
         foreignKey: 'userId'
       });
     }
@@ -72,6 +85,13 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true
         }
       },
+      occupation: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [0, 50]
+        }
+      },
       hashedPassword: {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
@@ -82,9 +102,6 @@ module.exports = (sequelize, DataTypes) => {
       image: {
         type: DataTypes.STRING,
         allowNull: false,
-        // validate: {
-        //   len: [1, 300]
-        // },
         defaultValue: "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
       }
     },

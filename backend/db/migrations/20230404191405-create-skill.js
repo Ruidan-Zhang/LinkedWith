@@ -7,38 +7,24 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Users", {
+    return queryInterface.createTable("Skills", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      firstName: {
-        type: Sequelize.STRING(30),
-        allowNull: false
-      },
-      lastName: {
-        type: Sequelize.STRING(30),
-        allowNull: false
-      },
-      email: {
-        type: Sequelize.STRING(256),
+      userId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true
+        references: {
+          model: 'Users'
+        },
+        onDelete: 'CASCADE'
       },
-      occupation: {
-        type: Sequelize.STRING(50),
-        allowNull: true
-      },
-      hashedPassword: {
-        type: Sequelize.STRING.BINARY,
+      content: {
+        type: Sequelize.STRING(100),
         allowNull: false
-      },
-      image: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
       },
       createdAt: {
         allowNull: false,
@@ -53,7 +39,7 @@ module.exports = {
     }, options);
   },
   down: async (queryInterface, Sequelize) => {
-    options.tableName = "Users";
+    options.tableName = "Skills";
     return queryInterface.dropTable(options);
   }
 };
