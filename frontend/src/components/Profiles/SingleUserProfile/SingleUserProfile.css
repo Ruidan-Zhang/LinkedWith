@@ -48,9 +48,30 @@
     gap: 25px;
 }
 
+.experience-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 25px;
+}
+
 .experience-header {
     font-weight: 600;
     font-size: 20px;
+}
+
+.add-experience-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #666666;
+    padding: 15px;
+}
+
+.add-experience-button:hover {
+    background-color: #ebebeb;
+    border-radius: 50px;
 }
 
 .single-experience-card-container {

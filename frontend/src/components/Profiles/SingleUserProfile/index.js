@@ -36,16 +36,18 @@ const UserProfileComponent = () => {
                     </div>
                 </div>
                 <div className='user-experiences-container'>
-                    <div className='experience-header'>Experience</div>
-                    {targetUser.id === currentUser.id && (
+                    <div className='experience-header-container'>
+                        <div className='experience-header'>Experience</div>
+                        {targetUser.id === currentUser.id && (
                         <div>
                                 <OpenModalButton
-                                buttonText={'add'}
+                                buttonText={<i class="fa-thin fa-plus fa-2xl"></i>}
                                 modalComponent={<CreateExperienceForm />}
                                 className='add-experience-button'
                             />
                         </div>
-                    )}
+                        )}
+                    </div>
                     {targetUser.Experiences.map(experience => (
                         <div className='single-experience-card-container'>
                             <img className='working-experience-icon' src={workIcon} />

@@ -55,7 +55,7 @@ function ProfileButton({ user }) {
           <img className="drop-down-user-image" src={user.image} />
           <div>
             <div className="drop-down-user-name">{user.firstName} {user.lastName}</div>
-            <div>{user.occupation}</div>
+            <div className="drop-down-user-occupation">{user.occupation}</div>
           </div>
         </div>
         <div className="drop-down-menu-buttons">

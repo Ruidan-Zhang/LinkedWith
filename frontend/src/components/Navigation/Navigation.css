@@ -86,6 +86,7 @@
     margin-top: 8px;
     padding: 15px;
     right: 0;
+    max-width: 260px;
 }
 
 .nav-bar-user-container {
@@ -117,7 +118,6 @@
 .drop-down-user-info {
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .drop-down-user-image {
@@ -125,6 +125,16 @@
     width: 60px;
     object-fit: fill;
     border-radius: 50px;
+}
+
+.drop-down-user-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.drop-down-user-occupation {
+    font-weight: 300;
+    font-size: 13px;
 }
 
 .drop-down-menu-buttons {
