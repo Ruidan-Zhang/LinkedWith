@@ -292,6 +292,16 @@ const profileReducer = (state = initialState, action) => {
             newState.experiences[action.newExperience.id] = action.newExperience;
             return newState;
         };
+        case EDIT_EXPERIENCE: {
+            const newState = { ...state };
+            newState.experiences[action.updatedExperience.id] = action.updatedExperience;
+            return newState;
+        };
+        case DELETE_EXPERIENCE: {
+            const newState = { ...state };
+            delete newState.experiences[action.badExperienceId];
+            return newState;
+        };
         default:
             return state;
     }

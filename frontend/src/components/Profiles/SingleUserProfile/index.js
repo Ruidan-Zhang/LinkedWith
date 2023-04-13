@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import OpenModalButton from "../../OpenModalButton";
 import { useParams } from 'react-router-dom';
 import CreateExperienceForm from '../Experiences/CreateExperiences';
-import './SingleUserProfile.css';
+import EditExperienceForm from '../Experiences/EditExperiences';
+import DeleteExperienceConfirmation from '../Experiences/DeleteExperienceConfirmation';
 import workIcon from '../../../assets/working-experience-icon.png';
 import educationIcon from '../../../assets/educationIcon.png';
 import { getUserProfileThunk } from '../../../store/users';
 import { cleanUpProfileAction } from '../../../store/users';
+import './SingleUserProfile.css';
 
 const UserProfileComponent = () => {
     const dispatch = useDispatch();
@@ -35,36 +37,58 @@ const UserProfileComponent = () => {
                         <div className='profile-page-user-occupation'>{targetUser.occupation}</div>
                     </div>
                 </div>
-                <div className='user-experiences-container'>
-                    <div className='experience-header-container'>
-                        <div className='experience-header'>Experience</div>
-                        {targetUser.id === currentUser.id && (
-                        <div>
-                                <OpenModalButton
-                                buttonText={<i class="fa-thin fa-plus fa-2xl"></i>}
-                                modalComponent={<CreateExperienceForm />}
-                                className='add-experience-button'
-                            />
-                        </div>
-                        )}
-                    </div>
-                    {targetUser.Experiences.map(experience => (
-                        <div className='single-experience-card-container'>
-                            <img className='working-experience-icon' src={workIcon} />
-                            <div className='single-experience-card'>
-                                <div className='working-title'>
-                                    {experience.jobTitle}
-                                </div>
-                                <div className='company-name'>
-                                    {experience.companyName}
-                                </div>
-                                <div className='working-timeline'>
-                                    {experience.startedAt.slice(0, 7)} - {experience.endedAt.slice(0, 7)}
-                                </div>
+                {(targetUser.Experiences.length > 0) && (
+                    <div className='user-experiences-container'>
+                        <div className='experience-header-container'>
+                            <div className='experience-header'>Experience</div>
+                            {targetUser.id === currentUser.id && (
+                            <div>
+                                    <OpenModalButton
+                                    buttonText={<i className="fa-thin fa-plus fa-2xl"></i>}
+                                    modalComponent={<CreateExperienceForm />}
+                                    className='add-experience-button'
+                                />
                             </div>
+                            )}
                         </div>
-                    ))}
-                </div>
+                        {targetUser.Experiences.map(experience => (
+                            <div className='single-experience-card-container'>
+                                <div className='single-experience-left-container'>
+                                    <img className='working-experience-icon' src={workIcon} />
+                                    <div className='single-experience-card'>
+                                        <div className='working-title'>
+                                            {experience.jobTitle}
+                                        </div>
+                                        <div className='company-name'>
+                                            {experience.companyName}
+                                        </div>
+                                        <div className='working-timeline'>
+                                            {experience.startedAt.slice(0, 7)} - {experience.endedAt.slice(0, 7)}
+                                        </div>
+                                    </div>
+                                </div>
+                                {targetUser.id === currentUser.id && (
+                                    <div className='single-experience-right-container'>
+                                        <div>
+                                            <OpenModalButton
+                                            buttonText={<i className="fa-solid fa-pen-to-square"></i>}
+                                            modalComponent={<EditExperienceForm experience={experience}/>}
+                                            className='single-post-edit-button'
+                                            />
+                                        </div>
+                                        <div>
+                                            <OpenModalButton
+                                            buttonText={<i className="fa-regular fa-trash-can"></i>}
+                                            modalComponent={<DeleteExperienceConfirmation experience={experience}/>}
+                                            className='single-post-delete-button'
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
                 <div className='user-experiences-container'>
                     <div className='experience-header'>Education</div>
                     {targetUser.Education.map(education => (

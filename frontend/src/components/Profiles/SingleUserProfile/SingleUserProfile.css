@@ -75,9 +75,22 @@
 }
 
 .single-experience-card-container {
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.single-experience-left-container {
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+
+.single-experience-right-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
 }
 
 .working-experience-icon {
