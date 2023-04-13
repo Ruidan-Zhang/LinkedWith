@@ -2,23 +2,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from "react";
 import OpenModalButton from "../../OpenModalButton";
 import { useParams } from 'react-router-dom';
-import { getAllUserThunk } from '../../../store/users';
+import CreateExperienceForm from '../Experiences/CreateExperiences';
 import './SingleUserProfile.css';
 import workIcon from '../../../assets/working-experience-icon.png';
 import educationIcon from '../../../assets/educationIcon.png';
+import { getUserProfileThunk } from '../../../store/users';
+import { cleanUpProfileAction } from '../../../store/users';
 
 const UserProfileComponent = () => {
     const dispatch = useDispatch();
 
     const { userId } = useParams();
-    const targetUser = useSelector(state => state.allUsers[userId]);
+
+    const targetUserProfileObj = useSelector(state => state.users);
+    const targetUser = targetUserProfileObj[userId];
     const currentUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        dispatch(getAllUserThunk());
-    }, [dispatch]);
+        dispatch(getUserProfileThunk(userId));
+        return () => dispatch(cleanUpProfileAction());
+    }, [dispatch, userId]);
 
-    if (!targetUser) return null;
+    if (!targetUserProfileObj || !targetUser) return null;
 
     return (
         <div className='user-profile-main-container'>
@@ -32,6 +37,15 @@ const UserProfileComponent = () => {
                 </div>
                 <div className='user-experiences-container'>
                     <div className='experience-header'>Experience</div>
+                    {targetUser.id === currentUser.id && (
+                        <div>
+                                <OpenModalButton
+                                buttonText={'add'}
+                                modalComponent={<CreateExperienceForm />}
+                                className='add-experience-button'
+                            />
+                        </div>
+                    )}
                     {targetUser.Experiences.map(experience => (
                         <div className='single-experience-card-container'>
                             <img className='working-experience-icon' src={workIcon} />

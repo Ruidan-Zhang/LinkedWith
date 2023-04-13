@@ -76,6 +76,19 @@ router.get('/:userId', async (req, res, next) => {
 
 //================================Experiences routes================================
 
+//Get current user's experiences
+router.get('/:userId/experience', requireAuth, async (req, res) => {
+    const userId = req.params.userId;
+
+    const allExperiences = await Experience.findAll({
+        where: {
+            userId: userId
+        }
+    });
+
+    return res.json(allExperiences);
+});
+
 //Create an experience
 router.post('/:userId/experience', validateExperience, requireAuth, async (req, res) => {
     const { companyName, jobTitle, startedAt, endedAt } = req.body;
@@ -168,6 +181,19 @@ router.delete('/:userId/experience/:experienceId', requireAuth, async (req, res,
 
 //================================Educations routes================================
 
+//Get current user's educations
+router.get('/:userId/education', requireAuth, async (req, res) => {
+    const userId = req.params.userId;
+
+    const allEducations = await Education.findAll({
+        where: {
+            userId: userId
+        }
+    });
+
+    return res.json(allEducations);
+});
+
 //Create an education
 router.post('/:userId/education', validateEducation, requireAuth, async (req, res) => {
     const { schoolName, startedAt, endedAt } = req.body;
@@ -257,6 +283,19 @@ router.delete('/:userId/education/:educationId', requireAuth, async (req, res, n
 });
 
 //================================Skills routes================================
+
+//Get current user's skills
+router.get('/:userId/skill', requireAuth, async (req, res) => {
+    const userId = req.params.userId;
+
+    const allSkills = await Skill.findAll({
+        where: {
+            userId: userId
+        }
+    });
+
+    return res.json(allSkills);
+});
 
 //Create a skill
 router.post('/:userId/skill', validateSkill, requireAuth, async (req, res) => {

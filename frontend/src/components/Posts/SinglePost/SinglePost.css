@@ -8,7 +8,6 @@
 }
 
 .single-post-header-container {
-    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,10 +19,15 @@
 }
 
 .single-post-user-image {
+    cursor: pointer;
     height: 50px;
     width: 50px;
     object-fit: fill;
     border-radius: 50px;
+}
+
+.single-post-header {
+    cursor: pointer;
 }
 
 .single-post-time {
