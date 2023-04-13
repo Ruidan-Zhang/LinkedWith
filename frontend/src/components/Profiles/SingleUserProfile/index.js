@@ -51,7 +51,7 @@ const UserProfileComponent = () => {
                             </div>
                             )}
                         </div>
-                        {targetUser.Experiences.map(experience => (
+                        {targetUser.Experiences.sort((a, b) => new Date(b.startedAt) - new Date(a.startedAt)).map(experience => (
                             <div className='single-experience-card-container'>
                                 <div className='single-experience-left-container'>
                                     <img className='working-experience-icon' src={workIcon} />
