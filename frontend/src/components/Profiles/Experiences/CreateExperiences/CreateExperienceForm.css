@@ -1,6 +1,6 @@
 .create-experience-form-main-container {
-    height: 300px;
-    width: 450px;
+    height: 470px;
+    width: 410px;
     padding: 25px;
 }
 
@@ -8,7 +8,7 @@
     border-bottom: 1px solid #ebebeb;
     margin-top: 15px;
     padding-bottom: 15px;
-    font-weight: 20;
+    font-weight: 400;
     font-size: 19px;
 }
 
@@ -16,8 +16,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top: 8px;
+    justify-content: space-around;
+    margin-top: -8px;
 }
 
 .create-experience-form-inputs-container {
@@ -39,6 +39,12 @@
 
 .create-experience-form-input {
     height: 25px;
+}
+
+.create-experience-form-errors {
+    color: #cc1015;
+    font-size: 13px;
+    margin-top: 4px;
 }
 
 .create-experience-submit-button {

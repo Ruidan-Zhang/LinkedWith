@@ -13,15 +13,19 @@ function CreateExperienceForm() {
 
     const [companyName, setCompanyName] = useState("");
     const [jobTitle, setJobTitle] = useState('');
+    const [startedAt, setStartedAt] = useState("");
+    const [endedAt, setEndedAt] = useState('');
     const [errors, setErrors] = useState([]);
 
     const currentUser = useSelector(state => state.session.user);
 
+    const today = new Date().toISOString().split('T')[0];
+
     useEffect(() => {
         const newErrors = [];
 
-        if (companyName.length > 50) newErrors.push('You have exceeded the maximum character limit (50)');
-        if (jobTitle.length > 50) newErrors.push('You have exceeded the maximum character limit (50)');
+        if (companyName.length > 50) newErrors.push('Company name is too long (50)');
+        if (jobTitle.length > 50) newErrors.push('Job title is too long (50)');
 
         setErrors(newErrors);
 
@@ -33,8 +37,8 @@ function CreateExperienceForm() {
         const newExperience = {
             companyName,
             jobTitle,
-            startedAt: '2022-12',
-            endedAt: '2023-03'
+            startedAt,
+            endedAt
         };
 
         await dispatch(createExperienceThunk(currentUser.id, newExperience));
@@ -72,6 +76,38 @@ function CreateExperienceForm() {
                             required
                         />
                     </div>
+                    <div className="create-experience-form-each-input">
+                        <div className="create-experience-input-title">Start date</div>
+                        <input
+                            type="date"
+                            className="create-experience-form-input"
+                            value={startedAt}
+                            onChange={(e) => setStartedAt(e.target.value)}
+                            min="1923-01-01"
+                            max={endedAt}
+                            required
+                        />
+                    </div>
+                    <div className="create-experience-form-each-input">
+                        <div className="create-experience-input-title">End date</div>
+                        <input
+                            type="date"
+                            className="create-experience-form-input"
+                            value={endedAt}
+                            onChange={(e) => setEndedAt(e.target.value)}
+                            min={startedAt}
+                            max={today}
+                            required
+                        />
+                    </div>
+                </div>
+                <div className="create-experience-form-errors">
+                    {errors.map((error) => (
+                    <div>
+                        <i class="fa-solid fa-ban"></i>{' '}
+                        {error}
+                    </div>
+                    ))}
                 </div>
                 <button type="submit" className="create-experience-submit-button">Save</button>
             </div>
