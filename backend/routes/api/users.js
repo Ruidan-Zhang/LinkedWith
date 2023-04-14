@@ -37,6 +37,9 @@ router.get('/', async (req, res) => {
       },
       {
         model: Skill
+      },
+      {
+        model: Experience
       }
     ]
   });

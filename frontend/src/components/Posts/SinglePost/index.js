@@ -31,10 +31,10 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
 
     return (
         <div className="single-post-card-container">
-            <div className='single-post-header-container' onClick={goToUserProfileHandler}>
-                <img className='single-post-user-image' src={userImage}/>
+            <div className='single-post-header-container'>
+                <img className='single-post-user-image' onClick={goToUserProfileHandler} src={userImage}/>
                 <div className='single-post-header'>
-                    <div className='single-post-user-name'>{firstName} {lastName}</div>
+                    <div className='single-post-user-name' onClick={goToUserProfileHandler}>{firstName} {lastName}</div>
                     <div className='single-post-time'>{timeFormat(time)}</div>
                 </div>
                 {userId === currentUser.id && (

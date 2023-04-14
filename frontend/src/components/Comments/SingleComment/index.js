@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentThunk } from "../../../store/comments";
 import { editCommentThunk } from "../../../store/comments";
 import OpenModalButton from "../../OpenModalButton";
-import DeleteCommentonfirmation from "../DeleteComments";
+import DeleteCommentConfirmation from "../DeleteComments";
 import './SingleComment.css';
 
 const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, commentId, postId, time }) => {
@@ -99,7 +99,7 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
                             <div>
                             <OpenModalButton
                                 buttonText={<i className="fa-regular fa-trash-can"></i>}
-                                modalComponent={<DeleteCommentonfirmation id={commentId}/>}
+                                modalComponent={<DeleteCommentConfirmation id={commentId}/>}
                                 className='single-comment-delete-button'
                             />
                             </div>

@@ -5,12 +5,12 @@ import { useHistory } from 'react-router-dom';
 import { useModal } from "../../../context/Modal";
 import './DeleteComments.css';
 
-const DeleteCommentonfirmation = ({ id }) => {
+const DeleteCommentConfirmation = ({ id }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
 
-    const deletePostHandler = async (e) => {
+    const deleteHandler = async (e) => {
         e.preventDefault();
         await dispatch(deleteCommentThunk(id));
         closeModal();
@@ -27,10 +27,10 @@ const DeleteCommentonfirmation = ({ id }) => {
             <h5 className='delete-post-body'>Are you sure you want to permanently remove this comment?</h5>
             <div className='delete-post-buttons-container'>
                 <button className='delete-post-cancel-button' onClick={cancelHandler}>Cancel</button>
-                <button className='delete-post-confirmation-button' onClick={deletePostHandler}>Delete</button>
+                <button className='delete-post-confirmation-button' onClick={deleteHandler}>Delete</button>
             </div>
         </div>
     )
 }
 
-export default DeleteCommentonfirmation;
+export default DeleteCommentConfirmation;
