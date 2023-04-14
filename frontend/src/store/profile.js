@@ -302,6 +302,50 @@ const profileReducer = (state = initialState, action) => {
             delete newState.experiences[action.badExperienceId];
             return newState;
         };
+        case LOAD_EDUCATION: {
+            const newState = initialState;
+            action.educations.forEach(education => {
+                newState.educations[education.id] = education;
+            });
+            return newState;
+        };
+        case CREATE_EDUCATION: {
+            const newState = { ...state };
+            newState.educations[action.newEducation.id] = action.newEducation;
+            return newState;
+        };
+        case EDIT_EDUCATION: {
+            const newState = { ...state };
+            newState.educations[action.updatedEducation.id] = action.updatedEducation;
+            return newState;
+        };
+        case DELETE_EDUCATION: {
+            const newState = { ...state };
+            delete newState.educations[action.badEducationId];
+            return newState;
+        };
+        case LOAD_SKILL: {
+            const newState = initialState;
+            action.skills.forEach(skill => {
+                newState.skills[skill.id] = skill;
+            });
+            return newState;
+        };
+        case CREATE_SKILL: {
+            const newState = { ...state };
+            newState.skills[action.newSkill.id] = action.newSkill;
+            return newState;
+        };
+        case EDIT_SKILL: {
+            const newState = { ...state };
+            newState.skills[action.updatedSkill.id] = action.updatedSkill;
+            return newState;
+        };
+        case DELETE_SKILL: {
+            const newState = { ...state };
+            delete newState.skills[action.badSkillId];
+            return newState;
+        };
         default:
             return state;
     }

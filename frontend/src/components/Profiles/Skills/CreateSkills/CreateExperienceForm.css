@@ -1,0 +1,61 @@
+.create-experience-form-main-container {
+    height: 470px;
+    width: 410px;
+    padding: 25px;
+}
+
+.create-experience-form-title {
+    border-bottom: 1px solid #ebebeb;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 400;
+    font-size: 19px;
+}
+
+.create-experience-form-body-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: -8px;
+}
+
+.create-experience-form-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.create-experience-form-each-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-experience-input-title {
+    color: #666666;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.create-experience-form-input {
+    height: 25px;
+}
+
+.create-experience-form-errors {
+    color: #cc1015;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.create-experience-submit-button {
+    cursor: pointer;
+    background-color: #0b65c2;
+    color: white;
+    border: none;
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: auto;
+}
