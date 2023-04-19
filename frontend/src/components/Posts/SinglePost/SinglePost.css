@@ -28,11 +28,19 @@
 
 .single-post-header {
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.single-post-user-name {
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .single-post-time {
-    font-size: smaller;
-    color: #797979;
+    font-size: 13px;
+    color: #6d6d6d;
 }
 
 .single-post-card-buttons {

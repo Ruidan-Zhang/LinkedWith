@@ -9,7 +9,7 @@ import CreateCommentForm from '../../Comments/CreateComments';
 import { loadUserLikesThunk, createLikeThunk, deleteLikeThunk } from '../../../store/likes';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, likes }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, occupation, userImage, time, likes }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
@@ -53,8 +53,9 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
         <div className="single-post-card-container">
             <div className='single-post-header-container'>
                 <img className='single-post-user-image' onClick={goToUserProfileHandler} src={userImage}/>
-                <div className='single-post-header'>
-                    <div className='single-post-user-name' onClick={goToUserProfileHandler}>{firstName} {lastName}</div>
+                <div className='single-post-header' onClick={goToUserProfileHandler}>
+                    <div className='single-post-user-name'>{firstName} {lastName}</div>
+                    <div className='single-post-time'>{occupation}</div>
                     <div className='single-post-time'>{timeFormat(time)}</div>
                 </div>
                 {userId === currentUser.id && (
