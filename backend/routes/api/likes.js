@@ -82,29 +82,22 @@ router.post('/:postId', requireAuth, async (req, res) => {
 });
 
 //Delete a like
-router.delete('/:postId', requireAuth, async (req, res, next) => {
-    const postId = req.params.postId;
-    const foundPost = await Post.findByPk(postId, {
-        include: [Like]
-    });
+router.delete('/:likeId', requireAuth, async (req, res, next) => {
+    const likeId = req.params.likeId;
+    const foundLike = await Like.findByPk(likeId);
 
-    if (!foundPost) {
-        const err = new Error("Post couldn't be found");
+    if (!foundLike) {
+        const err = new Error("Like couldn't be found");
         err.status = 404;
         next(err)
+    } else if (foundLike.userId !== req.user.id) {
+        const err = new Error("Forbidden");
+        err.status = 403;
+        next(err)
     } else {
-        const like = foundPost.Likes.find(like => like.userId === req.user.id);
-
-        if (!like) {
-            const err = new Error("User has not liked current post.");
-            err.status = 403;
-            next(err)
-        }
-
-        await like.destroy();
-
+        await foundLike.destroy();
         res.statusCode = 200;
-        return res.json(foundPost);
+        return res.json(foundLike);
     }
 });
 

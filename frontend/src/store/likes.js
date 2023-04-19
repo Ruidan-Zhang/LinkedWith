@@ -71,8 +71,8 @@ export const createLikeThunk = (postId) => async dispatch => {
     }
 };
 
-export const deleteLikeThunk = (postId) => async dispatch => {
-    const response = await csrfFetch(`/api/likes/${postId}`, {
+export const deleteLikeThunk = (likeId) => async dispatch => {
+    const response = await csrfFetch(`/api/likes/${likeId}`, {
       method: "DELETE"
     });
 

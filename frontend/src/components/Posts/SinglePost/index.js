@@ -6,8 +6,7 @@ import EditPostForm from '../EditPosts';
 import DeletePostConfirmation from '../DeletePosts';
 import AllCommentsComponent from '../../Comments/AllComments';
 import CreateCommentForm from '../../Comments/CreateComments';
-import { loadUserLikesThunk, loadPostLikesThunk, createLikeThunk, deleteLikeThunk } from '../../../store/likes';
-import { getAllPostsThunk } from '../../../store/posts';
+import { loadUserLikesThunk, createLikeThunk, deleteLikeThunk } from '../../../store/likes';
 import './SinglePost.css';
 
 const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, likes }) => {
@@ -40,7 +39,7 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
 
     const unlikeHandler = async (e) => {
         e.preventDefault();
-        await dispatch(deleteLikeThunk(id));
+        await dispatch(deleteLikeThunk(currentUserLikes[currentUserLikes.length - 1].id));
         await dispatch(loadUserLikesThunk(currentUser.id));
     };
 
@@ -76,14 +75,14 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
             <div className='single-post-content'>{content}</div>
             <img src={image} className='single-post-image'></img>
             <div className='single-post-counts'>
-                <div className='single-post-likes-count'>
+                {/* <div className='single-post-likes-count'>
                     {likes?.length === 1 && (
                         <div>{likes[0].firstName} {likes[0].lastName}</div>
                     )}
                     {likes?.length > 1 && (
                         <div>{likes[0].firstName} {likes[0].lastName} and {likes.length - 1} others</div>
                     )}
-                </div>
+                </div> */}
                 {/* <div className='single-post-comments-count'></div>
                 {numComments > 0 && (
                     <div className='single-post-comments-count' onClick={showCommentsHandler}>{numComments} comments</div>
