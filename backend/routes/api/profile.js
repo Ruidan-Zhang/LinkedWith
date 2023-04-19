@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Education, Experience, Skill } = require('../../db/models');
+const { User, Education, Experience, Skill, Like } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -49,17 +49,7 @@ const validateSkill = [
 router.get('/:userId', async (req, res, next) => {
     const userId = req.params.userId;
     let foundUser = await User.findByPk(userId, {
-        include: [
-            {
-                model: Experience
-            },
-            {
-                model: Skill
-            },
-            {
-                model: Education
-            }
-        ]
+        include: [Education, Experience, Skill, Like]
     });
 
     if (!foundUser) {

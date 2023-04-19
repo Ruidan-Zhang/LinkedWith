@@ -45,6 +45,7 @@ const AllPostsComponent = () => {
                         userImage={post.User.image}
                         time={post.createdAt}
                         numComments={post.numComments}
+                        likes={post.Likes}
                         />
                     ))}
                 </div>

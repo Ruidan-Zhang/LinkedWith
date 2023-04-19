@@ -1,17 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import OpenModalButton from "../../OpenModalButton";
 import EditPostForm from '../EditPosts';
 import DeletePostConfirmation from '../DeletePosts';
 import AllCommentsComponent from '../../Comments/AllComments';
 import CreateCommentForm from '../../Comments/CreateComments';
+import { loadUserLikesThunk, loadPostLikesThunk, createLikeThunk, deleteLikeThunk } from '../../../store/likes';
+import { getAllPostsThunk } from '../../../store/posts';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userImage, time, likes }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
+    const currentUserLikesObj = useSelector(state => state.likes);
+    const currentUserLikes = Object.values(currentUserLikesObj);
+
     const [showComments, setShowComments] = useState(false);
 
     const timeFormat = (time) => {
@@ -26,6 +31,22 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
     const goToUserProfileHandler = () => {
         history.push(`/profile/${userId}`);
     };
+
+    const likeHandler = async (e) => {
+        e.preventDefault();
+        await dispatch(createLikeThunk(id));
+        await dispatch(loadUserLikesThunk(currentUser.id));
+    };
+
+    const unlikeHandler = async (e) => {
+        e.preventDefault();
+        await dispatch(deleteLikeThunk(id));
+        await dispatch(loadUserLikesThunk(currentUser.id));
+    };
+
+    useEffect(() => {
+        dispatch(loadUserLikesThunk(currentUser.id));
+    }, [currentUser, dispatch]);
 
     if (!currentUser) return null;
 
@@ -54,19 +75,36 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, userI
             </div>
             <div className='single-post-content'>{content}</div>
             <img src={image} className='single-post-image'></img>
-            {/* <div className='single-post-counts'>
-                <div className='single-post-likes-count'></div>
+            <div className='single-post-counts'>
+                <div className='single-post-likes-count'>
+                    {likes?.length === 1 && (
+                        <div>{likes[0].firstName} {likes[0].lastName}</div>
+                    )}
+                    {likes?.length > 1 && (
+                        <div>{likes[0].firstName} {likes[0].lastName} and {likes.length - 1} others</div>
+                    )}
+                </div>
+                {/* <div className='single-post-comments-count'></div>
                 {numComments > 0 && (
                     <div className='single-post-comments-count' onClick={showCommentsHandler}>{numComments} comments</div>
-                )}
-            </div> */}
+                )} */}
+            </div>
             <div className='single-post-footer'>
-                {/* <div className='single-post-footer-buttons-container'>
-                    <button className='single-post-footer-buttons'>
-                        <i className="fa-regular fa-thumbs-up"></i>{' '}
-                        Like
-                    </button>
-                </div> */}
+                {!currentUserLikes.some(el => el.postId === id) ? (
+                    <div className='single-post-footer-buttons-container'>
+                        <button className='single-post-footer-buttons' onClick={likeHandler}>
+                            <i className="fa-regular fa-thumbs-up"></i>{' '}
+                            Like
+                        </button>
+                    </div>
+                ) : (
+                    <div className='single-post-footer-buttons-container'>
+                        <button className='single-post-footer-buttons' onClick={unlikeHandler}>
+                            <i className="fa-solid fa-thumbs-up"></i>{' '}
+                            Like
+                        </button>
+                    </div>
+                )}
                 <div className='single-post-footer-buttons-container'>
                     <button onClick={showCommentsHandler} className='single-post-footer-buttons'>
                         <i className="fa-regular fa-comment-dots"></i>{' '}
