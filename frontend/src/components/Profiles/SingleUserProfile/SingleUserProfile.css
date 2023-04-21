@@ -18,6 +18,8 @@
     background-color: white;
     border-radius: 15px;
     padding: 25px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .profile-page-user-image {
@@ -31,6 +33,7 @@
 .profile-page-user-name {
     font-weight: bold;
     font-size: 30px;
+    margin-bottom: 5px;
 }
 
 .profile-page-user-occupation {

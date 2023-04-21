@@ -87,9 +87,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       occupation: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         validate: {
-          len: [0, 50]
+          len: [1, 50]
         }
       },
       hashedPassword: {

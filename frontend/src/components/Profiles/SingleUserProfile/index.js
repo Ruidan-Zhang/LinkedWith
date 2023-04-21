@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from "react";
 import OpenModalButton from "../../OpenModalButton";
 import { useParams } from 'react-router-dom';
+import EditProfileForm from '../EditUserProfile';
 import CreateExperienceForm from '../Experiences/CreateExperiences';
 import EditExperienceForm from '../Experiences/EditExperiences';
 import DeleteExperienceConfirmation from '../Experiences/DeleteExperienceConfirmation';
@@ -37,11 +38,22 @@ const UserProfileComponent = () => {
         <div className='user-profile-main-container'>
             <div className='profile-page-left-container'>
                 <div className='user-profile-bio-container'>
-                    <img className='profile-page-user-image' src={targetUser.image} />
-                    <div className='user-header-container'>
-                        <div className='profile-page-user-name'>{targetUser.firstName} {targetUser.lastName}</div>
-                        <div className='profile-page-user-occupation'>{targetUser.occupation}</div>
+                    <div>
+                        <img className='profile-page-user-image' src={targetUser.image} />
+                        <div className='user-header-container'>
+                            <div className='profile-page-user-name'>{targetUser.firstName} {targetUser.lastName}</div>
+                            <div className='profile-page-user-occupation'>{targetUser.occupation}</div>
+                        </div>
                     </div>
+                    {targetUser.id === currentUser.id && (
+                        <div>
+                                <OpenModalButton
+                                buttonText={<i className="fa-solid fa-pen-to-square"></i>}
+                                modalComponent={<EditProfileForm />}
+                                className='add-experience-button'
+                            />
+                        </div>
+                    )}
                 </div>
                 {(targetUser.Experiences.length > 0) ? (
                     <div className='user-experiences-container'>

@@ -118,6 +118,7 @@
 .drop-down-user-info {
     display: flex;
     flex-direction: row;
+    gap: 5px;
 }
 
 .drop-down-user-image {
@@ -130,11 +131,13 @@
 .drop-down-user-name {
     font-weight: 600;
     margin-bottom: 4px;
+    word-break: break-all;
 }
 
 .drop-down-user-occupation {
     font-weight: 300;
     font-size: 13px;
+    word-break: break-all;
 }
 
 .drop-down-menu-buttons {

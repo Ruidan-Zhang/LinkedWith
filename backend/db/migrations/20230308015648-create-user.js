@@ -29,7 +29,7 @@ module.exports = {
       },
       occupation: {
         type: Sequelize.STRING(50),
-        allowNull: true
+        allowNull: false
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,

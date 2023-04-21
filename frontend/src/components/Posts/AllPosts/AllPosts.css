@@ -35,12 +35,14 @@
     cursor: pointer;
     font-weight: 600;
     margin-bottom: 15px;
+    word-break: break-all;
 }
 
 .left-card-user-occupation {
     font-size: smaller;
     color: #6d6d6d;
     margin-bottom: 13px;
+    word-break: break-all;
 }
 
 .feed-page-right-card {

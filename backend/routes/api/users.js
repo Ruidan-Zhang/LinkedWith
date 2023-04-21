@@ -20,6 +20,9 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.'),
+    check('occupation')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid occupation.'),
   check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -59,8 +62,8 @@ router.post(
     '/',
     validateSignup,
     async (req, res) => {
-      const { firstName, lastName, email, password, image } = req.body;
-      const user = await User.signup({ firstName, lastName, email, password, image });
+      const { firstName, lastName, email, occupation, password, image } = req.body;
+      const user = await User.signup({ firstName, lastName, email, occupation, password, image });
 
       await setTokenCookie(res, user);
 

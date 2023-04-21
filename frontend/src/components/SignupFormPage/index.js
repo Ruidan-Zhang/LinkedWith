@@ -11,6 +11,7 @@ function SignupFormPage() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [occupation, setOccupation] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -21,7 +22,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, firstName, lastName, password }))
+      return dispatch(sessionActions.signup({ email, firstName, lastName, occupation, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -65,6 +66,16 @@ function SignupFormPage() {
             className='sign-up-form-input'
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        <label className='sign-up-form-label'>
+          Occupation
+        </label>
+          <input
+            type="text"
+            className='sign-up-form-input'
+            value={occupation}
+            onChange={(e) => setOccupation(e.target.value)}
             required
           />
         <label className='sign-up-form-label'>
