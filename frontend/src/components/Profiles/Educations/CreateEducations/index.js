@@ -89,7 +89,7 @@ function CreateEducationForm() {
                 <div className="create-experience-form-errors">
                     {errors.map((error) => (
                     <div>
-                        <i class="fa-solid fa-ban"></i>{' '}
+                        <i className="fa-solid fa-ban"></i>{' '}
                         {error}
                     </div>
                     ))}

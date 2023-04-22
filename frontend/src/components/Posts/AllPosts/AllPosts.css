@@ -1,5 +1,4 @@
 .feed-page-main-container {
-    /* border: 3px solid pink; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -35,14 +34,14 @@
     cursor: pointer;
     font-weight: 600;
     margin-bottom: 15px;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .left-card-user-occupation {
     font-size: smaller;
     color: #6d6d6d;
     margin-bottom: 13px;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .feed-page-right-card {
@@ -72,7 +71,6 @@
 }
 
 .all-posts-main-container {
-    /* border: 3px orange solid; */
     width: 556px;
 }
 

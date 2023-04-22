@@ -136,7 +136,7 @@
 .single-skill-card {
     font-weight: 500;
     font-size: 16px;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .profile-page-right-container {

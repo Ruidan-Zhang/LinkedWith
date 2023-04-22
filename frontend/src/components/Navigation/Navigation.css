@@ -131,13 +131,13 @@
 .drop-down-user-name {
     font-weight: 600;
     margin-bottom: 4px;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .drop-down-user-occupation {
     font-weight: 300;
     font-size: 13px;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .drop-down-menu-buttons {

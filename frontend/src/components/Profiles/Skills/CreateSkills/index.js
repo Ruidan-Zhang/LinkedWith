@@ -15,8 +15,6 @@ function CreateSkillForm() {
 
     const currentUser = useSelector(state => state.session.user);
 
-    const today = new Date().toISOString().split('T')[0];
-
     useEffect(() => {
         const newErrors = [];
 
@@ -61,7 +59,7 @@ function CreateSkillForm() {
                 <div className="create-experience-form-errors">
                     {errors.map((error) => (
                     <div>
-                        <i class="fa-solid fa-ban"></i>{' '}
+                        <i className="fa-solid fa-ban"></i>{' '}
                         {error}
                     </div>
                     ))}
