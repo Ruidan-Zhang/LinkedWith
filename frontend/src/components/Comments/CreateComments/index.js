@@ -54,13 +54,13 @@ function CreateCommentForm({ id }) {
       <div className="create-comment-form-errors">
         {errors.map((error) => (
           <div>
-            <i class="fa-solid fa-ban"></i>{' '}
+            <i className="fa-solid fa-ban"></i>{' '}
             {error}
           </div>
         ))}
       </div>
       <div className="create-comment-form-footer">
-        {content && content.length <= 500 && (
+        {content.replaceAll(' ', '') && content.length <= 500 && (
           <button className="create-comment-submit-button" type="submit">Post</button>
         )}
         {(content.length > 500) && (

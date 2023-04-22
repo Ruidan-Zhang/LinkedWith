@@ -15,8 +15,6 @@ function EditSkillForm({ skill }) {
     const [content, setContent] = useState(skill.content);
     const [errors, setErrors] = useState([]);
 
-    const today = new Date().toISOString().split('T')[0];
-
     useEffect(() => {
         const newErrors = [];
 
@@ -62,7 +60,7 @@ function EditSkillForm({ skill }) {
                 <div className="create-experience-form-errors">
                     {errors.map((error) => (
                     <div>
-                        <i class="fa-solid fa-ban"></i>{' '}
+                        <i className="fa-solid fa-ban"></i>{' '}
                         {error}
                     </div>
                     ))}

@@ -60,7 +60,7 @@ const SingleCommentCard = ({ firstName, lastName, userImage, commentOwnerId, com
                 ))}
             </div>
             <div className="edit-comment-form-footer">
-                {(content && content.length <= 500 && content !== foundComment.content) ? (
+                {(content.replaceAll(' ', '') && content.length <= 500 && content !== foundComment.content) ? (
                 <button className="edit-comment-submit-button" type="submit">Save Changes</button>
                 ) : (
                 <button className="edit-comment-submit-button-disabled" type="submit" disabled={true}>Save Changes</button>

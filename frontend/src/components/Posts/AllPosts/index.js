@@ -5,9 +5,11 @@ import { getAllPostsThunk } from "../../../store/posts";
 import CreatePostForm from "../CreatePosts";
 import SinglePostCard from "../SinglePost";
 import './AllPosts.css';
+import { useHistory } from "react-router-dom";
 
 const AllPostsComponent = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const allPostsObj = useSelector(state => state.posts);
     const allPosts = Object.values(allPostsObj);
     const currentUser = useSelector(state => state.session.user);
@@ -16,13 +18,18 @@ const AllPostsComponent = () => {
         dispatch(getAllPostsThunk());
     }, [dispatch]);
 
+    const goToUserProfileHandler = () => {
+        history.push(`/profile/${currentUser.id}`);
+    };
+
     if (!allPostsObj || !allPosts) return null;
 
     return (
         <div className="feed-page-main-container">
             <div className="feed-page-left-card">
-                <img className="left-card-image" src={currentUser?.image}/>
-                <div className="left-card-user-name">{currentUser?.firstName} {currentUser?.lastName}</div>
+                <img className="left-card-image" src={currentUser?.image} onClick={goToUserProfileHandler}/>
+                <div className="left-card-user-name" onClick={goToUserProfileHandler}>{currentUser?.firstName} {currentUser?.lastName}</div>
+                <div className="left-card-user-occupation">{currentUser?.occupation}</div>
             </div>
             <div className="all-posts-main-container">
                 <div className="create-post-main-container">
@@ -43,8 +50,10 @@ const AllPostsComponent = () => {
                         firstName={post.User.firstName}
                         lastName={post.User.lastName}
                         userImage={post.User.image}
+                        occupation={post.User.occupation}
                         time={post.createdAt}
                         numComments={post.numComments}
+                        likes={post.Likes}
                         />
                     ))}
                 </div>

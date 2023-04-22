@@ -13,52 +13,62 @@ module.exports = {
       {
         userId: 1,
         postId: 1,
-        liked: false
+        firstName: 'Nico',
+        lastName: 'Borde'
       },
       {
         userId: 1,
         postId: 2,
-        liked: true
+        firstName: 'Nico',
+        lastName: 'Borde'
       },
       {
         userId: 2,
         postId: 1,
-        liked: true
+        firstName: 'Liana',
+        lastName: 'Nieddu'
       },
       {
         userId: 2,
         postId: 2,
-        liked: true
+        firstName: 'Liana',
+        lastName: 'Nieddu'
       },
       {
         userId: 2,
         postId: 3,
-        liked: false
+        firstName: 'Liana',
+        lastName: 'Nieddu'
       },
       {
         userId: 3,
         postId: 1,
-        liked: true
+        firstName: 'Alvis',
+        lastName: 'McNiven'
       },
       {
         userId: 4,
         postId: 5,
-        liked: false
+        firstName: 'Emil',
+        lastName: 'Pastore'
       },
       {
         userId: 4,
         postId: 6,
-        liked: true
+        firstName: 'Emil',
+        lastName: 'Pastore'
       },
       {
         userId: 5,
         postId: 7,
-        liked: true
+        firstName: 'Lana',
+        lastName: 'Green'
       },
       {
         userId: 6,
         postId: 7,
-        liked: true
+        firstName: 'Alina',
+        lastName: 'Nicomedes'
       }
     ], {});
   },

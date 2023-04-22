@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from "react";
 import OpenModalButton from "../../OpenModalButton";
 import { useParams } from 'react-router-dom';
+import EditProfileForm from '../EditUserProfile';
 import CreateExperienceForm from '../Experiences/CreateExperiences';
 import EditExperienceForm from '../Experiences/EditExperiences';
 import DeleteExperienceConfirmation from '../Experiences/DeleteExperienceConfirmation';
@@ -37,13 +38,24 @@ const UserProfileComponent = () => {
         <div className='user-profile-main-container'>
             <div className='profile-page-left-container'>
                 <div className='user-profile-bio-container'>
-                    <img className='profile-page-user-image' src={targetUser.image} />
-                    <div className='user-header-container'>
-                        <div className='profile-page-user-name'>{targetUser.firstName} {targetUser.lastName}</div>
-                        <div className='profile-page-user-occupation'>{targetUser.occupation}</div>
+                    <div>
+                        <img className='profile-page-user-image' src={targetUser.image} />
+                        <div className='user-header-container'>
+                            <div className='profile-page-user-name'>{targetUser.firstName} {targetUser.lastName}</div>
+                            <div className='profile-page-user-occupation'>{targetUser.occupation}</div>
+                        </div>
                     </div>
+                    {targetUser.id === currentUser.id && (
+                        <div>
+                                <OpenModalButton
+                                buttonText={<i className="fa-solid fa-pen-to-square"></i>}
+                                modalComponent={<EditProfileForm />}
+                                className='add-experience-button'
+                            />
+                        </div>
+                    )}
                 </div>
-                {(targetUser.Experiences.length > 0) && (
+                {(targetUser.Experiences.length > 0) ? (
                     <div className='user-experiences-container'>
                         <div className='experience-header-container'>
                             <div className='experience-header'>Experience</div>
@@ -94,8 +106,29 @@ const UserProfileComponent = () => {
                             </div>
                         ))}
                     </div>
+                ) : (
+                    <div className='user-experiences-container'>
+                        {(targetUser.id === currentUser.id) && (
+                            <div className='experience-header-container'>
+                                <div className='experience-header'>Experience</div>
+                                <div>
+                                        <OpenModalButton
+                                        buttonText={<i className="fa-thin fa-plus fa-2xl"></i>}
+                                        modalComponent={<CreateExperienceForm />}
+                                        className='add-experience-button'
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        {(targetUser.id !== currentUser.id) && (
+                            <div className='experience-header-container'>
+                                <div className='experience-header'>Experience</div>
+                                <div className='single-skill-card'>Not available yet.</div>
+                            </div>
+                        )}
+                    </div>
                 )}
-                {(targetUser.Education.length > 0) && (
+                {(targetUser.Education.length > 0) ? (
                     <div className='user-experiences-container'>
                         <div className='experience-header-container'>
                             <div className='experience-header'>Education</div>
@@ -143,14 +176,29 @@ const UserProfileComponent = () => {
                             </div>
                         ))}
                     </div>
+                ) : (
+                    <div className='user-experiences-container'>
+                        {(targetUser.id === currentUser.id) && (
+                            <div className='experience-header-container'>
+                                <div className='experience-header'>Education</div>
+                                <div>
+                                        <OpenModalButton
+                                        buttonText={<i className="fa-thin fa-plus fa-2xl"></i>}
+                                        modalComponent={<CreateEducationForm />}
+                                        className='add-experience-button'
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        {(targetUser.id !== currentUser.id) && (
+                            <div className='experience-header-container'>
+                                <div className='experience-header'>Education</div>
+                                <div className='single-skill-card'>Not available yet.</div>
+                            </div>
+                        )}
+                    </div>
                 )}
-                {/* <div className='user-skills-container'>
-                    <div className='experience-header'>Skills</div>
-                    {targetUser.Skills.map(skill => (
-                        <div className='single-skill-card'>{skill.content}</div>
-                    ))}
-                </div> */}
-                {(targetUser.Skills.length > 0) && (
+                {(targetUser.Skills.length > 0) ? (
                     <div className='user-experiences-container'>
                         <div className='experience-header-container'>
                             <div className='experience-header'>Skills</div>
@@ -191,6 +239,27 @@ const UserProfileComponent = () => {
                                 )}
                             </div>
                         ))}
+                    </div>
+                ) : (
+                    <div className='user-experiences-container'>
+                        {(targetUser.id === currentUser.id) && (
+                            <div className='experience-header-container'>
+                                <div className='experience-header'>Skills</div>
+                                <div>
+                                        <OpenModalButton
+                                        buttonText={<i className="fa-thin fa-plus fa-2xl"></i>}
+                                        modalComponent={<CreateSkillForm />}
+                                        className='add-experience-button'
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        {(targetUser.id !== currentUser.id) && (
+                            <div className='experience-header-container'>
+                                <div className='experience-header'>Skills</div>
+                                <div className='single-skill-card'>Not available yet.</div>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

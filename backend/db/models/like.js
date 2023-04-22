@@ -29,10 +29,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    liked: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     sequelize,

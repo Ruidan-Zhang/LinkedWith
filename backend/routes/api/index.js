@@ -5,6 +5,7 @@ const usersRouter = require('./users.js');
 const postsRouter = require('./posts.js');
 const commentsRouter = require('./comments.js');
 const profileRouter = require('./profile.js');
+const likeRouter = require('./likes.js');
 const { restoreUser } = require("../../utils/auth.js");
 
 // Connect restoreUser middleware to the API router
@@ -18,5 +19,6 @@ router.use('/users', usersRouter);
 router.use('/posts', postsRouter);
 router.use('/comments', commentsRouter);
 router.use('/profile', profileRouter);
+router.use('/likes', likeRouter);
 
 module.exports = router;

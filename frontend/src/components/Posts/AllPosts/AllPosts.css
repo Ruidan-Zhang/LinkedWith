@@ -1,5 +1,4 @@
 .feed-page-main-container {
-    /* border: 3px solid pink; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -13,24 +12,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 225px;
+    width: 230px;
     background-color: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     position: sticky;
     top: 25px;
+    box-sizing: border-box;
 }
 
 .left-card-image {
+    cursor: pointer;
     height: 75px;
     width: 75px;
     border-radius: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     margin-top: 5px;
 }
 
 .left-card-user-name {
+    cursor: pointer;
+    font-weight: 600;
     margin-bottom: 15px;
+    word-break: keep-all;
+}
+
+.left-card-user-occupation {
+    font-size: smaller;
+    color: #6d6d6d;
+    margin-bottom: 13px;
+    word-break: keep-all;
 }
 
 .feed-page-right-card {
@@ -60,7 +71,6 @@
 }
 
 .all-posts-main-container {
-    /* border: 3px orange solid; */
     width: 556px;
 }
 

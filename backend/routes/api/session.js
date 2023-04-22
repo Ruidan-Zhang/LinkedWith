@@ -1,11 +1,13 @@
 // backend/routes/api/session.js
 const express = require('express');
 
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3.js');
 
 const router = express.Router();
 
@@ -45,6 +47,49 @@ router.post(
       });
     }
 );
+
+//Edit user profile
+router.put('/', singleMulterUpload('image'), requireAuth, async (req, res) => {
+  const currentUser = req.user;
+
+  if (!currentUser) {
+      res.status = 404;
+      res.statusCode = 404;
+      return res.json({
+          "message": "Please log in first",
+          "statusCode": res.status
+      })
+  } else {
+      const { image, firstName, lastName, occupation } = req.body;
+      let userImage;
+
+      if (req.file) {
+        userImage = await singlePublicFileUpload(req.file);
+      };
+
+      if (userImage) {
+        currentUser.update({
+              userId: req.user.id,
+              firstName,
+              lastName,
+              occupation,
+              image: userImage
+          });
+          res.statusCode = 201;
+          return res.json(currentUser);
+      } else {
+        currentUser.update({
+              userId: req.user.id,
+              firstName,
+              lastName,
+              occupation,
+              image
+          });
+          res.statusCode = 201;
+          return res.json(currentUser);
+      }
+  }
+});
 
 // Log out
 router.delete(

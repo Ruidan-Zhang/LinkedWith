@@ -25,7 +25,7 @@ function EditExperienceForm({ experience }) {
 
         if (companyName.length > 50) newErrors.push('Company name is too long (50)');
         if (jobTitle.length > 50) newErrors.push('Job title is too long (50)');
-        
+
         setErrors(newErrors);
 
     }, [companyName, jobTitle]);
@@ -104,7 +104,7 @@ function EditExperienceForm({ experience }) {
                 <div className="create-experience-form-errors">
                     {errors.map((error) => (
                     <div>
-                        <i class="fa-solid fa-ban"></i>{' '}
+                        <i className="fa-solid fa-ban"></i>{' '}
                         {error}
                     </div>
                     ))}

@@ -37,7 +37,7 @@
 }
 
 .single-comment-content {
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .single-comment-buttons-container {
@@ -72,7 +72,7 @@
     min-height: 45px;
     max-width: 427px;
     border: none;
-    word-break: break-all;
+    word-break: keep-all;
     padding-left: 10px;
     background-color: #f2f2f2;
 }
