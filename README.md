@@ -25,16 +25,33 @@ LinkedWith, a LinkedIn clone website, is a professional social networking platfo
 
 
 
-### Features:
-1. Landing page
+## Features:
+### Landing page
 ![home-page-demo-user]
 
-[home-page-demo-user]: ./assets/LinkedWith-landing-page.png
+[home-page-demo-user]: ./assets/landing-page.gif
 
-2. Posts and Comments
-![home-page-posts]
+## Posts
+![posts]
 
-[home-page-posts]: ./assets/LinkedWith-posts-and-comments.png
+[posts]: ./assets/posts.gif
+
+## Comments
+![comments]
+
+[comments]: ./assets/comments.gif
+
+## Likes
+![likes]
+
+[likes]: ./assets/likes.gif
+
+## User profiles
+![user-profiles]
+![user-profiles2]
+
+[user-profiles]: ./assets/profiles-read.gif
+[user-profiles2]: ./assets/profiles-update.gif
 
 
 ## Getting started
