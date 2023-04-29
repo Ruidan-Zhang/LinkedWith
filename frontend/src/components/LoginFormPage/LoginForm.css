@@ -1,14 +1,20 @@
+.log-in-page-main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .log-in-page-container {
+    box-sizing: border-box;
+    align-items: center;
     background-color: white;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-    width: 1330px;
-    height: 750px;
-    padding-top: 70px;
+    width: 100vw;
+    padding-top: 100px;
     padding-left: 130px;
-    box-shadow: 1000px 0px white, -1000px 0px white;
 }
 
 .log-in-form-container {
@@ -102,4 +108,42 @@
 .log-in-page-image {
     width: 710px;
     height: 540px;
+}
+
+.log-in-page-down-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.log-in-page-down-image {
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.log-in-page-down-statement-and-button {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: self-start;
+    position: absolute;
+    top: 15%;
+}
+
+.log-in-page-down-statement {
+    font-weight: 200;
+    font-size: 50px;
+    color: #1a1a1a;
+}
+
+.log-in-page-down-button {
+    height: 45px;
+    width: 135px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #0b65c2;
+    color: white;
+    border: none;
+    font-size: 17px;
 }

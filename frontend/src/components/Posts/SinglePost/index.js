@@ -36,7 +36,7 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, occup
         await dispatch(createLikeThunk(id));
         await dispatch(loadUserLikesThunk(currentUser.id));
     };
-console.log('this is current user likes', currentUserLikes)
+
     const unlikeHandler = async (e) => {
         e.preventDefault();
         await dispatch(deleteLikeThunk(currentUserLikes.find(el => el.postId === id).id));

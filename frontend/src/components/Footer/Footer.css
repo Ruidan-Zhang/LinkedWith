@@ -1,8 +1,11 @@
 .footer-main-container {
+    border: 2px solid blue;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 45%;
-    margin-top: 15px;
+    /* margin-top: 15px; */
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-content {
