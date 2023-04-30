@@ -44,7 +44,12 @@
     word-break: keep-all;
 }
 
-.feed-page-right-card {
+.feed-page-right-column {
+    position: sticky;
+    top: 25px;
+}
+
+.feed-page-right-first-card {
     box-sizing: border-box;
     border: 1px solid #e0dfdb;
     display: flex;
@@ -54,8 +59,26 @@
     background-color: white;
     border-radius: 10px;
     padding: 25px;
-    position: sticky;
-    top: 25px;
+}
+
+.feed-page-right-second-card {
+    box-sizing: border-box;
+    text-align: center;
+    width: 290px;
+    padding: 30px;
+    color: #616161;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.developer-info {
+    margin-bottom: 10px;
+}
+
+.developer-icon {
+    text-decoration: none;
+    color: #616161;
 }
 
 .right-card-title {

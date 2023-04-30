@@ -268,6 +268,15 @@ const UserProfileComponent = () => {
                 <h5 className="right-card-description">
                     LinkedWith, a LinkedIn clone website, is a professional social networking platform that allows users to create profiles, connect with other professionals, and showcase their skills and experience.
                 </h5>
+                <div className="profile-page-right-second-card">
+                    <div className="developer-info">
+                        Ruidan Zhang © 2023 <a href = "https://github.com/Ruidan-Zhang" className="developer-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> </a>
+                        <a href = "https://www.linkedin.com/in/ruidan-meredith-zhang/" className="developer-icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div>
+                        Javascript | Express | React | Redux | SqlAlchemy | PostgresSQL | HTML | CSS | AWS | Hosted on Render
+                    </div>
+                </div>
             </div>
         </div>
     )

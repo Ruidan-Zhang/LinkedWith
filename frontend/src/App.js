@@ -8,7 +8,6 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllPostsComponent from "./components/Posts/AllPosts";
 import UserProfileComponent from "./components/Profiles/SingleUserProfile";
-import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,7 +50,6 @@ function App() {
           </Route>
         </Switch>
       )}
-      {/* <Footer /> */}
     </div>
   );
 }
