@@ -147,3 +147,20 @@
     border: none;
     font-size: 17px;
 }
+
+.log-in-page-footer {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    color: #828282;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.log-in-footer-icon {
+    text-decoration: none;
+    color: #828282;
+}
