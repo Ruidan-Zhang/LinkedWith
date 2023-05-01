@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import React from "react";
 import { deleteCommentThunk } from '../../../store/comments';
+import { getAllPostsThunk } from '../../../store/posts';
 import { useHistory } from 'react-router-dom';
 import { useModal } from "../../../context/Modal";
 import './DeleteComments.css';
@@ -15,6 +16,7 @@ const DeleteCommentConfirmation = ({ id }) => {
         await dispatch(deleteCommentThunk(id));
         closeModal();
         history.push('/feed');
+        await dispatch(getAllPostsThunk());
     };
 
     const cancelHandler = () => {

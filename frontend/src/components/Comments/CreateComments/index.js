@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 import { createCommentThunk } from "../../../store/comments";
+import { getAllPostsThunk } from "../../../store/posts";
 import { useModal } from "../../../context/Modal";
 import './CreateCommentsForm.css';
 
@@ -36,6 +37,7 @@ function CreateCommentForm({ id }) {
     history.push('/feed');
 
     setContent('');
+    await dispatch(getAllPostsThunk());
   };
 
   return (

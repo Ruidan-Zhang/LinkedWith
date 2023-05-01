@@ -7,9 +7,10 @@ import DeletePostConfirmation from '../DeletePosts';
 import AllCommentsComponent from '../../Comments/AllComments';
 import CreateCommentForm from '../../Comments/CreateComments';
 import { loadUserLikesThunk, createLikeThunk, deleteLikeThunk } from '../../../store/likes';
+import { getAllPostsThunk } from '../../../store/posts';
 import './SinglePost.css';
 
-const SinglePostCard = ({ id, userId, content, image, firstName, lastName, occupation, userImage, time, likes }) => {
+const SinglePostCard = ({ id, userId, content, image, firstName, lastName, occupation, userImage, time, numComments, likes }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user);
@@ -35,12 +36,14 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, occup
         e.preventDefault();
         await dispatch(createLikeThunk(id));
         await dispatch(loadUserLikesThunk(currentUser.id));
+        await dispatch(getAllPostsThunk());
     };
 
     const unlikeHandler = async (e) => {
         e.preventDefault();
         await dispatch(deleteLikeThunk(currentUserLikes.find(el => el.postId === id).id));
         await dispatch(loadUserLikesThunk(currentUser.id));
+        await dispatch(getAllPostsThunk());
     };
 
     useEffect(() => {
@@ -76,18 +79,23 @@ const SinglePostCard = ({ id, userId, content, image, firstName, lastName, occup
             <div className='single-post-content'>{content}</div>
             <img src={image} className='single-post-image'></img>
             <div className='single-post-counts'>
-                {/* <div className='single-post-likes-count'>
-                    {likes?.length === 1 && (
-                        <div>{likes[0].firstName} {likes[0].lastName}</div>
-                    )}
-                    {likes?.length > 1 && (
-                        <div>{likes[0].firstName} {likes[0].lastName} and {likes.length - 1} others</div>
-                    )}
-                </div> */}
-                {/* <div className='single-post-comments-count'></div>
-                {numComments > 0 && (
+                {likes && (
+                    <div>
+                        {likes.length === 1 && (
+                            <div className='single-post-likes-count'>
+                                <i className="fa-brands fa-gratipay" style={{color: "#df704c"}}></i> {likes[0].firstName} {likes[0].lastName}
+                            </div>
+                        )}
+                        {likes.length > 1 && (
+                            <div className='single-post-likes-count'>
+                                <i className="fa-brands fa-gratipay" style={{color: "#df704c"}}></i> {likes[0].firstName} {likes[0].lastName} and {likes.length - 1} others
+                            </div>
+                        )}
+                    </div>
+                )}
+                <div>
                     <div className='single-post-comments-count' onClick={showCommentsHandler}>{numComments} comments</div>
-                )} */}
+                </div>
             </div>
             <div className='single-post-footer'>
                 {!currentUserLikes.some(el => el.postId === id) ? (
