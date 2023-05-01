@@ -69,6 +69,42 @@ module.exports = {
         postId: 7,
         firstName: 'Alina',
         lastName: 'Nicomedes'
+      },
+      {
+        userId: 3,
+        postId: 8,
+        firstName: 'Alvis',
+        lastName: 'McNiven'
+      },
+      {
+        userId: 4,
+        postId: 8,
+        firstName: 'Emil',
+        lastName: 'Pastore'
+      },
+      {
+        userId: 5,
+        postId: 8,
+        firstName: 'Lana',
+        lastName: 'Green'
+      },
+      {
+        userId: 6,
+        postId: 8,
+        firstName: 'Alina',
+        lastName: 'Nicomedes'
+      },
+      {
+        userId: 7,
+        postId: 8,
+        firstName: 'Esben',
+        lastName: 'Hoshea'
+      },
+      {
+        userId: 1,
+        postId: 8,
+        firstName: 'Nico',
+        lastName: 'Borde'
       }
     ], {});
   },

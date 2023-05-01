@@ -90,12 +90,17 @@
     justify-content: space-between;
     padding-left: 16px;
     padding-right: 16px;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
+}
+
+.single-post-likes-count {
+    color: #797979;
+    font-size: 12px;
 }
 
 .single-post-comments-count {
     cursor: pointer;
-    color: #8d8d8d;
+    color: #797979;
     font-size: 12px;
 }
 

@@ -50,7 +50,9 @@ router.get('/', async (req, res) => {
 //Get details for a single post
 router.get('/:postId', async (req, res, next) => {
     const postId = req.params.postId;
-    let post = await Post.findByPk(postId);
+    let post = await Post.findByPk(postId, {
+        include: [Like]
+    });
 
     if (!post) {
         res.status = 404;
