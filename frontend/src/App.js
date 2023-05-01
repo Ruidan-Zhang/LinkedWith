@@ -23,20 +23,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && currentUser && (
         <Switch>
-          <Route exact path="/">
-            <AllPostsComponent />
-          </Route>
-          <Route exact={true} path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
           <Route path='/feed'>
             <AllPostsComponent />
           </Route>
           <Route path='/profile/:userId'>
             <UserProfileComponent />
+          </Route>
+          <Route path="/">
+            <AllPostsComponent />
           </Route>
         </Switch>
       )}
